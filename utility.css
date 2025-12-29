@@ -1,60 +1,42 @@
 body {
-        margin: 0;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        scroll-behavior: smooth;
-      }
-      
-      .section {
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-      }
-      
-      /* Sticky timeline */
-      .timeline-container {
-        position: relative;
-      }
-      
-      .timeline {
-        position: sticky;
-        top: 50%;
-        transform: translateY(-50%);
-      }
-      
-      /* Timeline dot states */
-      .timeline-dot {
-        transition: all 0.3s ease;
-      }
-      
-      .timeline-dot.filled {
-        background-color: #111827;
-        border-color: #111827;
-      }
-      
-      .timeline-dot.empty {
-        background-color: transparent;
-        border-color: #D1D5DB;
-      }
-      
-      .timeline-line {
-        transition: background-color 0.3s ease;
-      }
-      
-      .timeline-line.active {
-        background-color: #111827;
-      }
-      
-      /* Fixed navigation */
-      nav {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 50;
-        background-color: white;
-      }
-      
-      /* Add padding to first section for fixed nav */
-      #hero {
-        padding-top: 80px;
-      }
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Fix for the grid layout */
+@media (min-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 4rem;
+  }
+}
+/* Auto-scroll animation for desktop */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-100% + 100vw));
+  }
+}
+
+.animate-scroll {
+  animation: scroll 40s linear infinite;
+  width: max-content;
+}
+
+.projects-scroll:hover {
+  animation-play-state: paused;
+}
+
+@media (min-width: 1024px) {
+  .animate-scroll {
+    animation-duration: 50s;
+  }
+}
+
+@media (min-width: 1280px) {
+  .animate-scroll {
+    animation-duration: 60s;
+  }
+}

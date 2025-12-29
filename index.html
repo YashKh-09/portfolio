@@ -1,30 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" class="overflow-x-hidden">
   <head>
-    <!-- Simplified CSS links - remove any broken links -->
     <link rel="stylesheet" href="output.css" />
     <link rel="stylesheet" href="utility.css" />
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portfolio</title>
-    <style>
-      body {
-        margin: 0;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-          sans-serif;
-      }
-
-      /* Fix for the grid layout */
-      @media (min-width: 1024px) {
-        .hero-grid {
-          grid-template-columns: minmax(0, 1fr) auto;
-          gap: 4rem;
-        }
-      }
-
-     
-    </style>
   </head>
   <body>
     <nav class="bg-white shadow-sm sticky top-0 z-50">
@@ -265,21 +247,399 @@
         </div>
       </div>
     </section>
+    <!-- Projects Section -->
+    <section class="bg-white py-12 md:py-20 lg:py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Section Header - Responsive -->
+        <div class="mb-8 md:mb-12 lg:mb-16">
+          <div
+            class="flex items-center space-x-3 md:space-x-4 mb-2 md:mb-3 lg:mb-4"
+          >
+            <!-- Responsive bullet -->
+            <div
+              class="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 bg-gray-900 rounded-full"
+            ></div>
+            <!-- Responsive heading -->
+            <h2
+              class="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-semibold text-gray-900"
+            >
+              Featured Projects
+            </h2>
+          </div>
+          <p
+            class="text-gray-600 text-sm md:text-base lg:text-lg xl:text-xl max-w-3xl"
+          >
+            A selection of recent work showcasing digital products and
+            experiences.
+          </p>
+        </div>
 
-   
+        <!-- MOBILE: Vertical Stack (Shown on small screens) -->
+        <div class="md:hidden space-y-6">
+          <!-- Project 1 Mobile -->
+          <div
+            class="bg-gray-50 rounded-xl overflow-hidden border border-gray-200"
+          >
+            <!-- Image Container -->
+            <div class="h-48 relative">
+              <div
+                class="absolute inset-0 bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center"
+              >
+                <div class="text-center p-4">
+                  <div class="text-2xl font-bold text-blue-800 mb-1">
+                    Cash App
+                  </div>
+                  <p class="text-blue-700 text-sm">Design Systems</p>
+                </div>
+              </div>
+            </div>
 
-    <script>
-      // Simple script to prevent 404 errors in console
-      document.addEventListener("DOMContentLoaded", function () {
-        // Fix for any missing favicon
-        if (!document.querySelector('link[rel="icon"]')) {
-          const favicon = document.createElement("link");
-          favicon.rel = "icon";
-          favicon.href =
-            "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👤</text></svg>";
-          document.head.appendChild(favicon);
-        }
-      });
-    </script>
-  </body>
+            <!-- Content -->
+            <div class="p-4">
+              <div class="flex items-start space-x-3 mb-2">
+                <div
+                  class="w-2 h-2 mt-1.5 bg-gray-900 rounded-full flex-shrink-0"
+                ></div>
+                <div>
+                  <h3 class="text-base font-semibold text-gray-900 mb-1">
+                    Cash App Design Systems
+                  </h3>
+                  <p class="text-gray-600 text-xs">
+                    Mobile web design system and evolved on mobile design
+                    systems (including every component).
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2 Mobile -->
+          <div
+            class="bg-gray-50 rounded-xl overflow-hidden border border-gray-200"
+          >
+            <div class="h-48 relative">
+              <div
+                class="absolute inset-0 bg-gradient-to-br from-green-50 to-green-100 flex items-center justify-center"
+              >
+                <div class="text-center p-4">
+                  <div class="text-2xl font-bold text-green-800 mb-1">Line</div>
+                  <p class="text-green-700 text-sm">Influencer Platform</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-4">
+              <div class="flex items-start space-x-3 mb-2">
+                <div
+                  class="w-2 h-2 mt-1.5 bg-gray-900 rounded-full flex-shrink-0"
+                ></div>
+                <div>
+                  <h3 class="text-base font-semibold text-gray-900 mb-1">
+                    Line Influencer Platform
+                  </h3>
+                  <p class="text-gray-600 text-xs">
+                    Led the end-to-end development of app, shipping its concept
+                    and guiding it through the entire release process.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3 Mobile -->
+          <div
+            class="bg-gray-50 rounded-xl overflow-hidden border border-gray-200"
+          >
+            <div class="h-48 relative">
+              <div
+                class="absolute inset-0 bg-gradient-to-br from-purple-50 to-purple-100 flex items-center justify-center"
+              >
+                <div class="text-center p-4">
+                  <div class="text-2xl font-bold text-purple-800 mb-1">
+                    Line
+                  </div>
+                  <p class="text-purple-700 text-sm">Global Design Systems</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-4">
+              <div class="flex items-start space-x-3 mb-2">
+                <div
+                  class="w-2 h-2 mt-1.5 bg-gray-900 rounded-full flex-shrink-0"
+                ></div>
+                <div>
+                  <h3 class="text-base font-semibold text-gray-900 mb-1">
+                    Line Global Design Systems
+                  </h3>
+                  <p class="text-gray-600 text-xs">
+                    Started and led the creation of Line's global design system,
+                    creating the foundation from scratch.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- View More Button for Mobile -->
+          <div class="text-center pt-4">
+            <a
+              href="#"
+              class="inline-flex items-center text-gray-700 font-medium text-xs px-4 py-2.5 border border-gray-300 rounded-lg hover:bg-gray-50 transition-all"
+            >
+              View More Projects
+              <svg
+                class="ml-1.5 w-3.5 h-3.5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- DESKTOP: Horizontal Auto-scroll (Hidden on mobile, shown on md+) -->
+        <div class="hidden md:block relative overflow-hidden">
+          <!-- Scroll Container -->
+          <div
+            class="projects-scroll flex space-x-6 lg:space-x-8 animate-scroll"
+          >
+            <!-- Project 1 Desktop -->
+            <div class="flex-shrink-0 w-[65vw] lg:w-[45vw] xl:w-[35vw]">
+              <div
+                class="bg-gray-50 rounded-xl overflow-hidden border border-gray-200 hover:border-gray-300 transition-colors"
+              >
+                <div class="h-56 lg:h-64 xl:h-72 relative">
+                  <div
+                    class="absolute inset-0 bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center"
+                  >
+                    <div class="text-center p-6">
+                      <div
+                        class="text-3xl lg:text-4xl xl:text-5xl font-bold text-blue-800 mb-2"
+                      >
+                        Cash App
+                      </div>
+                      <p class="text-blue-700 text-base lg:text-lg">
+                        Design Systems
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="p-5 lg:p-6 xl:p-8">
+                  <div class="flex items-center space-x-3 mb-3 lg:mb-4">
+                    <div class="w-3 h-3 bg-gray-900 rounded-full"></div>
+                    <h3
+                      class="text-lg lg:text-xl xl:text-2xl font-semibold text-gray-900"
+                    >
+                      Cash App Design Systems
+                    </h3>
+                  </div>
+                  <p class="text-gray-600 text-sm lg:text-base">
+                    Mobile web design system and evolved on mobile design
+                    systems (including every component).
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Project 2 Desktop -->
+            <div class="flex-shrink-0 w-[65vw] lg:w-[45vw] xl:w-[35vw]">
+              <div
+                class="bg-gray-50 rounded-xl overflow-hidden border border-gray-200 hover:border-gray-300 transition-colors"
+              >
+                <div class="h-56 lg:h-64 xl:h-72 relative">
+                  <div
+                    class="absolute inset-0 bg-gradient-to-br from-green-50 to-green-100 flex items-center justify-center"
+                  >
+                    <div class="text-center p-6">
+                      <div
+                        class="text-3xl lg:text-4xl xl:text-5xl font-bold text-green-800 mb-2"
+                      >
+                        Line
+                      </div>
+                      <p class="text-green-700 text-base lg:text-lg">
+                        Influencer Platform
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="p-5 lg:p-6 xl:p-8">
+                  <div class="flex items-center space-x-3 mb-3 lg:mb-4">
+                    <div class="w-3 h-3 bg-gray-900 rounded-full"></div>
+                    <h3
+                      class="text-lg lg:text-xl xl:text-2xl font-semibold text-gray-900"
+                    >
+                      Line Influencer Platform
+                    </h3>
+                  </div>
+                  <p class="text-gray-600 text-sm lg:text-base">
+                    Led the end-to-end development of app, shipping its concept
+                    and guiding it through the entire release process.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Project 3 Desktop -->
+            <div class="flex-shrink-0 w-[65vw] lg:w-[45vw] xl:w-[35vw]">
+              <div
+                class="bg-gray-50 rounded-xl overflow-hidden border border-gray-200 hover:border-gray-300 transition-colors"
+              >
+                <div class="h-56 lg:h-64 xl:h-72 relative">
+                  <div
+                    class="absolute inset-0 bg-gradient-to-br from-purple-50 to-purple-100 flex items-center justify-center"
+                  >
+                    <div class="text-center p-6">
+                      <div
+                        class="text-3xl lg:text-4xl xl:text-5xl font-bold text-purple-800 mb-2"
+                      >
+                        Line
+                      </div>
+                      <p class="text-purple-700 text-base lg:text-lg">
+                        Global Design Systems
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="p-5 lg:p-6 xl:p-8">
+                  <div class="flex items-center space-x-3 mb-3 lg:mb-4">
+                    <div class="w-3 h-3 bg-gray-900 rounded-full"></div>
+                    <h3
+                      class="text-lg lg:text-xl xl:text-2xl font-semibold text-gray-900"
+                    >
+                      Line Global Design Systems
+                    </h3>
+                  </div>
+                  <p class="text-gray-600 text-sm lg:text-base">
+                    Started and led the creation of Line's global design system,
+                    creating the foundation from scratch.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Project 4 Desktop -->
+            <div class="flex-shrink-0 w-[65vw] lg:w-[45vw] xl:w-[35vw]">
+              <div
+                class="bg-gray-50 rounded-xl overflow-hidden border border-gray-200 hover:border-gray-300 transition-colors"
+              >
+                <div class="h-56 lg:h-64 xl:h-72 relative">
+                  <div
+                    class="absolute inset-0 bg-gradient-to-br from-orange-50 to-orange-100 flex items-center justify-center"
+                  >
+                    <div class="text-center p-6">
+                      <div
+                        class="text-3xl lg:text-4xl xl:text-5xl font-bold text-orange-800 mb-2"
+                      >
+                        Line
+                      </div>
+                      <p class="text-orange-700 text-base lg:text-lg">
+                        Shopping
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="p-5 lg:p-6 xl:p-8">
+                  <div class="flex items-center space-x-3 mb-3 lg:mb-4">
+                    <div class="w-3 h-3 bg-gray-900 rounded-full"></div>
+                    <h3
+                      class="text-lg lg:text-xl xl:text-2xl font-semibold text-gray-900"
+                    >
+                      Line Shopping
+                    </h3>
+                  </div>
+                  <p class="text-gray-600 text-sm lg:text-base">
+                    Designed Line Shopping and built new features for various
+                    international markets.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Duplicate for infinite scroll -->
+            <div class="flex-shrink-0 w-[65vw] lg:w-[45vw] xl:w-[35vw]">
+              <div
+                class="bg-gray-50 rounded-xl overflow-hidden border border-gray-200 hover:border-gray-300 transition-colors"
+              >
+                <div class="h-56 lg:h-64 xl:h-72 relative">
+                  <div
+                    class="absolute inset-0 bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center"
+                  >
+                    <div class="text-center p-6">
+                      <div
+                        class="text-3xl lg:text-4xl xl:text-5xl font-bold text-blue-800 mb-2"
+                      >
+                        Cash App
+                      </div>
+                      <p class="text-blue-700 text-base lg:text-lg">
+                        Design Systems
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="p-5 lg:p-6 xl:p-8">
+                  <div class="flex items-center space-x-3 mb-3 lg:mb-4">
+                    <div class="w-3 h-3 bg-gray-900 rounded-full"></div>
+                    <h3
+                      class="text-lg lg:text-xl xl:text-2xl font-semibold text-gray-900"
+                    >
+                      Cash App Design Systems
+                    </h3>
+                  </div>
+                  <p class="text-gray-600 text-sm lg:text-base">
+                    Mobile web design system and evolved on mobile design
+                    systems (including every component).
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Gradient Overlays -->
+          <div
+            class="absolute left-0 top-0 bottom-0 w-16 lg:w-24 xl:w-32 bg-gradient-to-r from-white to-transparent pointer-events-none"
+          ></div>
+          <div
+            class="absolute right-0 top-0 bottom-0 w-16 lg:w-24 xl:w-32 bg-gradient-to-l from-white to-transparent pointer-events-none"
+          ></div>
+        </div>
+
+        <!-- View All Button (Desktop) -->
+        <div class="hidden md:block text-center mt-10 lg:mt-12 xl:mt-16">
+          <a
+            href="#"
+            class="inline-flex items-center text-gray-900 font-medium text-sm lg:text-base px-6 py-3 lg:px-8 lg:py-4 border border-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-200 rounded-lg"
+          >
+            View All Projects
+            <svg
+              class="ml-2 lg:ml-3 w-4 h-4 lg:w-5 lg:h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M14 5l7 7m0 0l-7 7m7-7H3"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+<script src="script.js"></script>
+</body>
 </html>
