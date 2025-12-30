@@ -10,41 +10,46 @@
   </head>
   <body class="bg-[#F1DEDE]">
     <nav
-      class="bg-[#F1DEDE] shadow-sm sticky top-0 z-50 border-b border-[#80727B]/40"
+      class="bg-[#F1DEDE] shadow-sm sticky top-0 z-50 border-b border-[#80727B]/40 "
     >
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-20">
           <div class="flex items-center">
-            <span
-              class="text-2xl font-serif font-semibold text-[#545643] tracking-tight"
-            >
-              Brand
+            <span id="logo"
+              class="text-3xl font-semibold text-[#545643] tracking-tight"
+            ><a href="#">
+              Layer-C
+            </a>
             </span>
           </div>
 
           <!-- Desktop Navigation -->
           <div class="hidden sm:flex sm:items-center sm:space-x-10">
             <a
-              href="#hero"
-              class="text-[#80727B] hover:text-[#545643] text-lg font-medium transition-colors duration-200"
+              href="#"
+              class="nav-link text-[#80727B] hover:text-[#545643] text-lg font-medium transition-colors duration-200"
+              data-section="home"
             >
               Home
             </a>
             <a
               href="#projects"
-              class="text-[#80727B] hover:text-[#545643] text-lg font-medium transition-colors duration-200"
+              class="nav-link text-[#80727B] hover:text-[#545643] text-lg font-medium transition-colors duration-200"
+              data-section="projects"
             >
               Projects
             </a>
             <a
               href="#about"
-              class="text-[#80727B] hover:text-[#545643] text-lg font-medium transition-colors duration-200"
+              class="nav-link text-[#80727B] hover:text-[#545643] text-lg font-medium transition-colors duration-200"
+              data-section="about"
             >
               About
             </a>
             <a
               href="#socials"
-              class="text-[#80727B] hover:text-[#545643] text-lg font-medium transition-colors duration-200"
+              class="nav-link text-[#80727B] hover:text-[#545643] text-lg font-medium transition-colors duration-200"
+              data-section="socials"
             >
               Socials
             </a>
@@ -55,7 +60,7 @@
             <!-- Mobile Menu Button -->
             <button
               type="button"
-              class="text-[#80727B] hover:text-[#545643] focus:outline-none focus:ring-2 focus:ring-[#80727B]/40 rounded-md p-2"
+              class="mobile-menu-toggle text-[#80727B] hover:text-[#545643] focus:outline-none focus:ring-2 focus:ring-[#80727B]/40 rounded-md p-2"
               aria-expanded="false"
               aria-label="Toggle menu"
               id="mobile-menu-button"
@@ -78,29 +83,33 @@
         </div>
 
         <!-- Mobile Menu (Hidden by default) -->
-        <div class="sm:hidden hidden" id="mobile-menu">
+        <div class="sm:hidden hidden mobile-menu" id="mobile-menu">
           <div class="pt-2 pb-3 space-y-1 border-t border-[#80727B]/40">
             <a
-              href="#hero"
-              class="block px-3 py-4 text-base font-medium text-[#80727B] hover:text-[#545643] hover:bg-[#BBACC1] transition-colors duration-200 border-l-4 border-transparent hover:border-[#545643]"
+              href="#"
+              class="mobile-nav-link block px-3 py-4 text-base font-medium text-[#80727B] hover:text-[#545643] hover:bg-[#BBACC1] transition-colors duration-200 border-l-4 border-transparent hover:border-[#545643]"
+              data-section="home"
             >
               Home
             </a>
             <a
               href="#projects"
-              class="block px-3 py-4 text-base font-medium text-[#80727B] hover:text-[#545643] hover:bg-[#BBACC1] transition-colors duration-200 border-l-4 border-transparent hover:border-[#545643]"
+              class="mobile-nav-link block px-3 py-4 text-base font-medium text-[#80727B] hover:text-[#545643] hover:bg-[#BBACC1] transition-colors duration-200 border-l-4 border-transparent hover:border-[#545643]"
+              data-section="projects"
             >
               Projects
             </a>
             <a
               href="#about"
-              class="block px-3 py-4 text-base font-medium text-[#80727B] hover:text-[#545643] hover:bg-[#BBACC1] transition-colors duration-200 border-l-4 border-transparent hover:border-[#545643]"
+              class="mobile-nav-link block px-3 py-4 text-base font-medium text-[#80727B] hover:text-[#545643] hover:bg-[#BBACC1] transition-colors duration-200 border-l-4 border-transparent hover:border-[#545643]"
+              data-section="about"
             >
               About
             </a>
             <a
               href="#socials"
-              class="block px-3 py-4 text-base font-medium text-[#80727B] hover:text-[#545643] hover:bg-[#BBACC1] transition-colors duration-200 border-l-4 border-transparent hover:border-[#545643]"
+              class="mobile-nav-link block px-3 py-4 text-base font-medium text-[#80727B] hover:text-[#545643] hover:bg-[#BBACC1] transition-colors duration-200 border-l-4 border-transparent hover:border-[#545643]"
+              data-section="socials"
             >
               Socials
             </a>
@@ -197,7 +206,11 @@
                       <span class="text-green-400 mr-2">$</span>
                       <span class="text-cyan-300">whoami</span>
                     </div>
-                    <div class="text-gray-300 ml-4">web-developer</div>
+                    <div class="text-gray-300 ml-4 space-y-1">
+                      <div>Yash Khandelwal</div>
+                      <div>Web Developer</div>
+                      <div>Digital Creator</div>
+                    </div>
 
                     <div class="flex mt-4">
                       <span class="text-green-400 mr-2">$</span>
@@ -230,7 +243,7 @@
                     <div class="flex mt-6">
                       <span class="text-green-400 mr-2">$</span>
                       <div class="flex items-center">
-                        <span class="text-cyan-300 animate-pulse">_</span>
+                        <span class="terminal-cursor text-cyan-300">_</span>
                       </div>
                     </div>
                   </div>
@@ -252,7 +265,7 @@
         </div>
       </section>
 <!-- Projects Section -->
-<section class="bg-[#F1DEDE] py-12 md:py-20 lg:py-24">
+<section id="projects" class="bg-[#F1DEDE] py-12 md:py-20 lg:py-24">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Section Header -->
     <div class="mb-8 md:mb-12 lg:mb-16">
@@ -279,7 +292,7 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
         
         <!-- Project 1 -->
-        <div class="project-card bg-[#BBACC1] rounded-xl overflow-hidden border border-[#80727B]/40 hover:border-[#80727B] transition-colors hover:transform hover:-translate-y-1 duration-300">
+        <div class="project-card project-modal-trigger bg-[#BBACC1] rounded-xl overflow-hidden border border-[#80727B]/40 hover:border-[#80727B] transition-colors hover:transform hover:-translate-y-1 duration-300" data-project="cash-app">
           <div class="h-48 md:h-56 lg:h-64 relative">
             <div class="absolute inset-0 bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center">
               <div class="text-center p-4 md:p-6">
@@ -299,7 +312,7 @@
               </div>
             </div>
             <div class="mt-4">
-              <a href="#" class="text-[#545643] hover:text-[#80727B] text-xs md:text-sm font-medium inline-flex items-center">
+              <a href="#" class="view-project-btn text-[#545643] hover:text-[#80727B] text-xs md:text-sm font-medium inline-flex items-center" data-project="cash-app">
                 View Details
                 <svg class="ml-1 w-3 h-3 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -310,7 +323,7 @@
         </div>
 
         <!-- Project 2 -->
-        <div class="project-card bg-[#BBACC1] rounded-xl overflow-hidden border border-[#80727B]/40 hover:border-[#80727B] transition-colors hover:transform hover:-translate-y-1 duration-300">
+        <div class="project-card project-modal-trigger bg-[#BBACC1] rounded-xl overflow-hidden border border-[#80727B]/40 hover:border-[#80727B] transition-colors hover:transform hover:-translate-y-1 duration-300" data-project="line-influencer">
           <div class="h-48 md:h-56 lg:h-64 relative">
             <div class="absolute inset-0 bg-gradient-to-br from-green-50 to-green-100 flex items-center justify-center">
               <div class="text-center p-4 md:p-6">
@@ -330,7 +343,7 @@
               </div>
             </div>
             <div class="mt-4">
-              <a href="#" class="text-[#545643] hover:text-[#80727B] text-xs md:text-sm font-medium inline-flex items-center">
+              <a href="#" class="view-project-btn text-[#545643] hover:text-[#80727B] text-xs md:text-sm font-medium inline-flex items-center" data-project="line-influencer">
                 View Details
                 <svg class="ml-1 w-3 h-3 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -341,7 +354,7 @@
         </div>
 
         <!-- Project 3 -->
-        <div class="project-card bg-[#BBACC1] rounded-xl overflow-hidden border border-[#80727B]/40 hover:border-[#80727B] transition-colors hover:transform hover:-translate-y-1 duration-300">
+        <div class="project-card project-modal-trigger bg-[#BBACC1] rounded-xl overflow-hidden border border-[#80727B]/40 hover:border-[#80727B] transition-colors hover:transform hover:-translate-y-1 duration-300" data-project="line-design">
           <div class="h-48 md:h-56 lg:h-64 relative">
             <div class="absolute inset-0 bg-gradient-to-br from-purple-50 to-purple-100 flex items-center justify-center">
               <div class="text-center p-4 md:p-6">
@@ -361,7 +374,7 @@
               </div>
             </div>
             <div class="mt-4">
-              <a href="#" class="text-[#545643] hover:text-[#80727B] text-xs md:text-sm font-medium inline-flex items-center">
+              <a href="#" class="view-project-btn text-[#545643] hover:text-[#80727B] text-xs md:text-sm font-medium inline-flex items-center" data-project="line-design">
                 View Details
                 <svg class="ml-1 w-3 h-3 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -503,152 +516,104 @@
                   Building digital experiences that matter
                 </h3>
 
-                <div class="space-y-4 md:space-y-5 lg:space-y-6">
-                  <p
-                    class="text-[#80727B] text-base md:text-lg leading-relaxed"
-                  >
-                    I'm a passionate developer with 1+ year of experience
-                    crafting digital products that combine aesthetic appeal with
-                    functional excellence. My journey began with curiosity and
-                    has evolved into a dedicated practice of creating meaningful
-                    digital experiences.
-                  </p>
+               <div class="space-y-4 md:space-y-5 lg:space-y-6">
+  <p
+    class="text-[#80727B] text-base md:text-lg leading-relaxed"
+  >
+    I'm Yash Khandelwal and I'm a passionate developer with work that reflects both aesthetic appeal and functional excellence. My journey began with curiosity and has evolved into a dedicated practice of creating meaningful digital experiences under my main brand, <strong>Layer</strong>.
+  </p>
 
-                  <p
-                    class="text-[#80727B] text-base md:text-lg leading-relaxed"
-                  >
-                    My approach blends technical precision with creative
-                    problem-solving. I believe that great digital products
-                    should not only work flawlessly but also inspire and engage
-                    their users on every interaction.
-                  </p>
+  <p
+    class="text-[#80727B] text-base md:text-lg leading-relaxed"
+  >
+    Through <strong>Layer-C</strong>, I share my personal brand and content creation journey, while <strong>Layer-2</strong> focuses on digital products designed to deliver both functional precision and engaging design. My approach blends technical precision with creative problem-solving, ensuring every project not only works flawlessly but also delights and engages its users. Now, I am starting this journey from scratch with Layer to build and expand these experiences professionally.
+  </p>
 
-                  <!-- Skills Terminal -->
-                  <div
-                    class="mt-6 md:mt-8 p-4 md:p-5 lg:p-6 bg-[#BBACC1] rounded-xl border border-[#80727B]/40"
-                  >
-                    <div class="flex items-center space-x-2 mb-4">
-                      <div class="w-2 h-2 bg-[#545643] rounded-full"></div>
-                      <h4
-                        class="text-lg md:text-xl font-semibold text-[#545643]"
-                      >
-                        Core Expertise
-                      </h4>
-                    </div>
+  <!-- Skills Terminal -->
+  <div
+    class="mt-6 md:mt-8 p-4 md:p-5 lg:p-6 bg-[#BBACC1] rounded-xl border border-[#80727B]/40"
+  >
+    <div class="flex items-center space-x-2 mb-4">
+      <div class="w-2 h-2 bg-[#545643] rounded-full"></div>
+      <h4
+        class="text-lg md:text-xl font-semibold text-[#545643]"
+      >
+        Core Expertise
+      </h4>
+    </div>
 
-                    <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-                      <div class="flex items-center space-x-2">
-                        <div
-                          class="w-1.5 h-1.5 bg-green-500 rounded-full"
-                        ></div>
-                        <span class="text-sm md:text-base text-[#80727B]"
-                          >Frontend Development</span
-                        >
-                      </div>
-                      <div class="flex items-center space-x-2">
-                        <div class="w-1.5 h-1.5 bg-blue-500 rounded-full"></div>
-                        <span class="text-sm md:text-base text-[#80727B]"
-                          >UI/UX Design</span
-                        >
-                      </div>
-                      <div class="flex items-center space-x-2">
-                        <div
-                          class="w-1.5 h-1.5 bg-purple-500 rounded-full"
-                        ></div>
-                        <span class="text-sm md:text-base text-[#80727B]"
-                          >Responsive Design</span
-                        >
-                      </div>
-                      <div class="flex items-center space-x-2">
-                        <div
-                          class="w-1.5 h-1.5 bg-yellow-500 rounded-full"
-                        ></div>
-                        <span class="text-sm md:text-base text-[#80727B]"
-                          >Performance</span
-                        >
-                      </div>
-                      <div class="flex items-center space-x-2">
-                        <div class="w-1.5 h-1.5 bg-red-500 rounded-full"></div>
-                        <span class="text-sm md:text-base text-[#80727B]"
-                          >Accessibility</span
-                        >
-                      </div>
-                      <div class="flex items-center space-x-2">
-                        <div class="w-1.5 h-1.5 bg-cyan-500 rounded-full"></div>
-                        <span class="text-sm md:text-base text-[#80727B]"
-                          >Clean Code</span
-                        >
-                      </div>
-                    </div>
-                  </div>
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+      <div class="flex items-center space-x-2">
+        <div class="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+        <span class="text-sm md:text-base text-[#80727B]">Frontend Development</span>
+      </div>
+      <div class="flex items-center space-x-2">
+        <div class="w-1.5 h-1.5 bg-blue-500 rounded-full"></div>
+        <span class="text-sm md:text-base text-[#80727B]">UI/UX Design</span>
+      </div>
+      <div class="flex items-center space-x-2">
+        <div class="w-1.5 h-1.5 bg-purple-500 rounded-full"></div>
+        <span class="text-sm md:text-base text-[#80727B]">Responsive Design</span>
+      </div>
+      <div class="flex items-center space-x-2">
+        <div class="w-1.5 h-1.5 bg-yellow-500 rounded-full"></div>
+        <span class="text-sm md:text-base text-[#80727B]">Performance</span>
+      </div>
+      <div class="flex items-center space-x-2">
+        <div class="w-1.5 h-1.5 bg-red-500 rounded-full"></div>
+        <span class="text-sm md:text-base text-[#80727B]">Accessibility</span>
+      </div>
+      <div class="flex items-center space-x-2">
+        <div class="w-1.5 h-1.5 bg-cyan-500 rounded-full"></div>
+        <span class="text-sm md:text-base text-[#80727B]">Clean Code</span>
+      </div>
+    </div>
+  </div>
 
-                  <!-- Stats -->
-                  <div
-                    class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mt-6 md:mt-8"
-                  >
-                    <div
-                      class="text-center p-3 md:p-4 bg-[#545643] text-[#F1DEDE] rounded-lg"
-                    >
-                      <div class="text-xl md:text-2xl lg:text-3xl font-bold">
-                        1+
-                      </div>
-                      <div class="text-xs md:text-sm opacity-90">
-                        Year Experience
-                      </div>
-                    </div>
-                    <div
-                      class="text-center p-3 md:p-4 bg-[#80727B] text-[#F1DEDE] rounded-lg"
-                    >
-                      <div class="text-xl md:text-2xl lg:text-3xl font-bold">
-                        10+
-                      </div>
-                      <div class="text-xs md:text-sm opacity-90">Projects</div>
-                    </div>
-                    <div
-                      class="text-center p-3 md:p-4 bg-[#909580] text-[#F1DEDE] rounded-lg"
-                    >
-                      <div class="text-xl md:text-2xl lg:text-3xl font-bold">
-                        1
-                      </div>
-                      <div class="text-xs md:text-sm opacity-90">
-                        Videos Created
-                      </div>
-                    </div>
-                    <div
-                      class="text-center p-3 md:p-4 bg-[#BBACC1] text-[#545643] rounded-lg"
-                    >
-                      <div class="text-xl md:text-2xl lg:text-3xl font-bold">
-                        100%
-                      </div>
-                      <div class="text-xs md:text-sm opacity-90">
-                        Learning Mode
-                      </div>
-                    </div>
-                  </div>
+  <!-- Stats -->
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mt-6 md:mt-8">
+    <div class="text-center p-3 md:p-4 bg-[#545643] text-[#F1DEDE] rounded-lg">
+      <div class="text-xl md:text-2xl lg:text-3xl font-bold">1+</div>
+      <div class="text-xs md:text-sm opacity-90">Year Experience</div>
+    </div>
+    <div class="text-center p-3 md:p-4 bg-[#80727B] text-[#F1DEDE] rounded-lg">
+      <div class="text-xl md:text-2xl lg:text-3xl font-bold">10+</div>
+      <div class="text-xs md:text-sm opacity-90">Projects</div>
+    </div>
+    <div class="text-center p-3 md:p-4 bg-[#909580] text-[#F1DEDE] rounded-lg">
+      <div class="text-xl md:text-2xl lg:text-3xl font-bold">1</div>
+      <div class="text-xs md:text-sm opacity-90">Videos Created</div>
+    </div>
+    <div class="text-center p-3 md:p-4 bg-[#BBACC1] text-[#545643] rounded-lg">
+      <div class="text-xl md:text-2xl lg:text-3xl font-bold">100%</div>
+      <div class="text-xs md:text-sm opacity-90">Learning Mode</div>
+    </div>
+  </div>
 
-                  <!-- CTA Button -->
-                  <div class="pt-4 md:pt-5 lg:pt-6">
-                    <a
-                      href="#socials"
-                      class="inline-flex items-center text-[#F1DEDE] bg-[#909580] hover:bg-[#545643] px-5 py-3 md:px-6 md:py-3.5 lg:px-8 lg:py-4 text-sm md:text-base lg:text-lg rounded-md font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200"
-                    >
-                      Let's Work Together
-                      <svg
-                        class="ml-2 md:ml-3 w-3.5 h-3.5 md:w-4 md:h-4 lg:w-5 lg:h-5"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M14 5l7 7m0 0l-7 7m7-7H3"
-                        />
-                      </svg>
-                    </a>
-                  </div>
-                </div>
+  <!-- CTA Button -->
+  <div class="pt-4 md:pt-5 lg:pt-6">
+    <a
+      href="#socials"
+      class="inline-flex items-center text-[#F1DEDE] bg-[#909580] hover:bg-[#545643] px-5 py-3 md:px-6 md:py-3.5 lg:px-8 lg:py-4 text-sm md:text-base lg:text-lg rounded-md font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200"
+    >
+      Let's Work Together
+      <svg
+        class="ml-2 md:ml-3 w-3.5 h-3.5 md:w-4 md:h-4 lg:w-5 lg:h-5"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M14 5l7 7m0 0l-7 7m7-7H3"
+        />
+      </svg>
+    </a>
+  </div>
+</div>
+
               </div>
             </div>
           </div>
@@ -656,7 +621,7 @@
       </section>
 
       <!-- Social Links Section -->
-      <sectionz class="bg-[#F1DEDE] py-12 md:py-20 lg:py-24">
+      <section id="socials" class="bg-[#F1DEDE] py-12 md:py-20 lg:py-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <!-- Section Header -->
           <div class="mb-8 md:mb-12 lg:mb-16">
@@ -731,7 +696,8 @@
                       <span class="text-gray-400 mr-2">➜</span>
                       <a
                         href="#"
-                        class="text-blue-400 hover:text-blue-300 transition-colors truncate hover:underline"
+                        class="social-link text-blue-400 hover:text-blue-300 transition-colors truncate hover:underline"
+                        data-platform="linkedin"
                       >
                         linkedin.com/in/yashkh
                       </a>
@@ -748,10 +714,11 @@
                       >
                       <span class="text-gray-400 mr-2">➜</span>
                       <a
-                        href="#"
-                        class="text-gray-300 hover:text-white transition-colors truncate hover:underline"
+                        href="https://github.com/YashKh-09" target="_blank"
+                        class="social-link text-gray-300 hover:text-white transition-colors truncate hover:underline"
+                        data-platform="github"
                       >
-                        github.com/yashkh
+                        github.com/yashkh-09
                       </a>
                       <span
                         class="ml-2 text-xs text-gray-500 px-1.5 py-0.5 bg-gray-800 rounded flex-shrink-0"
@@ -766,10 +733,11 @@
                       >
                       <span class="text-gray-400 mr-2">➜</span>
                       <a
-                        href="#"
-                        class="text-red-400 hover:text-red-300 transition-colors truncate hover:underline"
+                        href="http://www.youtube.com/@Layer-C" target="_blank"
+                        class="social-link text-red-400 hover:text-red-300 transition-colors truncate hover:underline"
+                        data-platform="youtube"
                       >
-                        youtube.com/@yashkh
+                        youtube.com/@Layer-C
                       </a>
                       <span
                         class="ml-2 text-xs text-gray-500 px-1.5 py-0.5 bg-gray-800 rounded flex-shrink-0"
@@ -784,10 +752,11 @@
                       >
                       <span class="text-gray-400 mr-2">➜</span>
                       <a
-                        href="#"
-                        class="text-pink-400 hover:text-pink-300 transition-colors truncate hover:underline"
+                        href="https://www.instagram.com/layer.c1/" target="_blank"
+                        class="social-link text-pink-400 hover:text-pink-300 transition-colors truncate hover:underline"
+                        data-platform="instagram-content"
                       >
-                        instagram.com/yash_content
+                        instagram.com/Layer-C
                       </a>
                       <span
                         class="ml-2 text-xs text-gray-500 px-1.5 py-0.5 bg-gray-800 rounded flex-shrink-0"
@@ -802,14 +771,15 @@
                       >
                       <span class="text-gray-400 mr-2">➜</span>
                       <a
-                        href="#"
-                        class="text-purple-400 hover:text-purple-300 transition-colors truncate hover:underline"
+                        href="https://www.instagram.com/layer.b1/" target="_blank"
+                        class="social-link text-purple-400 hover:text-purple-300 transition-colors truncate hover:underline"
+                        data-platform="instagram-templates"
                       >
-                        instagram.com/yash_templates
+                        instagram.com/Layer-B
                       </a>
                       <span
                         class="ml-2 text-xs text-gray-500 px-1.5 py-0.5 bg-gray-800 rounded flex-shrink-0"
-                        >Templates</span
+                        >Digital Products</span
                       >
                     </div>
 
@@ -821,7 +791,8 @@
                       <span class="text-gray-400 mr-2">➜</span>
                       <a
                         href="#"
-                        class="text-orange-400 hover:text-orange-300 transition-colors truncate hover:underline"
+                        class="social-link text-orange-400 hover:text-orange-300 transition-colors truncate hover:underline"
+                        data-platform="gumroad"
                       >
                         gumroad.com/yashkh
                       </a>
@@ -838,10 +809,11 @@
                       >
                       <span class="text-gray-400 mr-2">➜</span>
                       <a
-                        href="#"
-                        class="text-teal-400 hover:text-teal-300 transition-colors truncate hover:underline"
+                        href="https://payhip.com/LayerB" target="_blank"
+                        class="social-link text-teal-400 hover:text-teal-300 transition-colors truncate hover:underline"
+                        data-platform="payhip"
                       >
-                        payhip.com/yashkh
+                        payhip.com/Layer-B
                       </a>
                       <span
                         class="ml-2 text-xs text-gray-500 px-1.5 py-0.5 bg-gray-800 rounded flex-shrink-0"
@@ -856,8 +828,9 @@
                       >
                       <span class="text-gray-400 mr-2">➜</span>
                       <a
-                        href="#"
-                        class="text-green-400 hover:text-green-300 transition-colors truncate hover:underline"
+                        href="https://www.fiverr.com/rishigoyal_" target="_blank"
+                        class="social-link text-green-400 hover:text-green-300 transition-colors truncate hover:underline"
+                        data-platform="fiverr"
                       >
                         fiverr.com/yashkh
                       </a>
@@ -875,7 +848,8 @@
                       <span class="text-gray-400 mr-2">➜</span>
                       <a
                         href="mailto:yashkh.dev@gmail.com"
-                        class="text-yellow-400 hover:text-yellow-300 transition-colors truncate hover:underline"
+                        class="social-link text-yellow-400 hover:text-yellow-300 transition-colors truncate hover:underline"
+                        data-platform="email"
                       >
                         yashkh.dev@gmail.com
                       </a>
@@ -902,7 +876,7 @@
                   <!-- Cursor -->
                   <div class="flex items-center mt-4 md:mt-6">
                     <span class="text-green-400 mr-2">$</span>
-                    <span class="text-cyan-300 animate-pulse">_</span>
+                    <span class="terminal-cursor text-cyan-300">_</span>
                   </div>
                 </div>
               </div>
@@ -923,7 +897,25 @@
             </div>
           </div>
         </div>
-      </sectionz>
+      </section>
+
+      <!-- Project Modal (Hidden by default) -->
+      <div id="project-modal" class="modal fixed inset-0 z-[100] hidden">
+        <div class="modal-overlay absolute inset-0 bg-black/50"></div>
+        <div class="modal-container relative min-h-screen flex items-center justify-center p-4">
+          <div class="modal-content bg-[#F1DEDE] rounded-xl max-w-4xl w-full max-h-[90vh] overflow-auto">
+            <div class="modal-header flex justify-between items-center p-6 border-b border-[#80727B]/40">
+              <h3 class="modal-title text-2xl font-semibold text-[#545643]">Project Details</h3>
+              <button class="modal-close text-[#80727B] hover:text-[#545643] text-2xl p-2">
+                &times;
+              </button>
+            </div>
+            <div class="modal-body p-6">
+              <!-- Content will be loaded dynamically via JavaScript -->
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
     <!-- Footer -->
     <footer class="bg-[#F1DEDE] border-t border-[#80727B]/40 py-8 md:py-10">
@@ -931,8 +923,8 @@
         <div class="text-center">
           <!-- Brand -->
           <div class="mb-4">
-            <span class="text-xl font-serif font-semibold text-[#545643]">
-              Yash
+            <span id="logo" class="text-xl font-semibold text-[#4C3B4D]">
+              Layer
             </span>
           </div>
 
@@ -944,7 +936,7 @@
 
           <!-- Copyright -->
           <p class="text-[#80727B] text-sm mb-6">
-            © 2024 Yash. All rights reserved.
+            © 2025 Layers. All rights reserved.
           </p>
 
           <!-- Links -->
@@ -975,7 +967,7 @@
           <div class="pt-4 border-t border-[#80727B]/40">
             <a
               href="#"
-              class="inline-flex items-center text-[#80727B] hover:text-[#545643] text-sm transition-colors duration-200"
+              class="back-to-top inline-flex items-center text-[#80727B] hover:text-[#545643] text-sm transition-colors duration-200"
             >
               Back to top
               <svg
@@ -996,6 +988,9 @@
         </div>
       </div>
     </footer>
+    
+    <!-- JavaScript Files -->
     <script src="script.js"></script>
+    <script src="modal.js"></script>
   </body>
 </html>
