@@ -2,22 +2,81 @@
 <html lang="en" class="overflow-x-hidden scroll-smooth">
   <head>
     <link rel="stylesheet" href="output.css" />
-    <link rel="stylesheet" href="utility.css" />
+
+    <!-- Font Awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portfolio | Yash Khandelwal</title>
+
+    <!-- Image Gallery Styles in Tailwind format -->
+    <style>
+      /* This will be injected by JavaScript */
+    </style>
   </head>
-  <body class="bg-[#F1DEDE]">
+  <body class="bg-[#F4E8DB]">
+    <!-- Image Gallery Modal (Hidden by default) -->
+    <div id="image-gallery-modal" class="fixed inset-0 z-[100] hidden">
+      <div class="absolute inset-0 bg-black/90 backdrop-blur-sm"></div>
+      <div class="relative h-full flex items-center justify-center p-4">
+        <button
+          id="close-gallery"
+          class="absolute top-6 right-6 z-10 w-12 h-12 bg-white/10 hover:bg-white/20 text-white rounded-full flex items-center justify-center transition-all duration-200 backdrop-blur-md"
+        >
+          <i class="fas fa-times text-xl"></i>
+        </button>
+
+        <div class="relative max-w-[90vw] max-h-[90vh]">
+          <div
+            id="gallery-loading"
+            class="absolute inset-0 flex items-center justify-center hidden"
+          >
+            <div
+              class="w-16 h-16 border-4 border-white/30 border-t-white rounded-full animate-spin"
+            ></div>
+          </div>
+
+          <img
+            id="gallery-image"
+            class="max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl"
+            alt="Project Image"
+          />
+
+          <div
+            id="gallery-description"
+            class="mt-4 text-white text-center text-lg font-medium"
+          ></div>
+        </div>
+
+        <button
+          id="prev-image"
+          class="absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 hover:bg-white/20 text-white rounded-full flex items-center justify-center transition-all duration-200 backdrop-blur-md hidden"
+        >
+          <i class="fas fa-chevron-left text-xl"></i>
+        </button>
+
+        <button
+          id="next-image"
+          class="absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 hover:bg-white/20 text-white rounded-full flex items-center justify-center transition-all duration-200 backdrop-blur-md hidden"
+        >
+          <i class="fas fa-chevron-right text-xl"></i>
+        </button>
+      </div>
+    </div>
+
     <nav
-      class="bg-[#F1DEDE] shadow-sm sticky top-0 z-50 border-b border-[#80727B]/40"
+      class="bg-[#F4E8DB] shadow-sm sticky top-0 z-50 border-b border-[#72727B]/40"
     >
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-20">
           <div class="flex items-center">
             <span
               id="logo"
-              class="text-2xl font-semibold text-[#545643] tracking-tight"
+              class="text-2xl font-semibold text-[#513D3B] tracking-tight"
               ><a href="#"> Yash Khandelwal </a>
             </span>
           </div>
@@ -26,28 +85,28 @@
           <div class="hidden sm:flex sm:items-center sm:space-x-10">
             <a
               href="#"
-              class="nav-link text-[#80727B] hover:text-[#545643] text-lg font-medium transition-colors duration-200"
+              class="nav-link text-[#4C4040] hover:text-[#7B8974] text-lg font-medium transition-colors duration-200"
               data-section="home"
             >
               Home
             </a>
             <a
               href="#works"
-              class="nav-link text-[#80727B] hover:text-[#545643] text-lg font-medium transition-colors duration-200"
+              class="nav-link text-[#4C4040] hover:text-[#7B8974] text-lg font-medium transition-colors duration-200"
               data-section="works"
             >
               My Works
             </a>
             <a
               href="#about"
-              class="nav-link text-[#80727B] hover:text-[#545643] text-lg font-medium transition-colors duration-200"
+              class="nav-link text-[#4C4040] hover:text-[#7B8974] text-lg font-medium transition-colors duration-200"
               data-section="about"
             >
               About
             </a>
             <a
               href="#socials"
-              class="nav-link text-[#80727B] hover:text-[#545643] text-lg font-medium transition-colors duration-200"
+              class="nav-link text-[#4C4040] hover:text-[#7B8974] text-lg font-medium transition-colors duration-200"
               data-section="socials"
             >
               Socials
@@ -56,10 +115,9 @@
 
           <!-- Mobile Navigation Toggle -->
           <div class="sm:hidden flex items-center">
-            <!-- Mobile Menu Button -->
             <button
               type="button"
-              class="mobile-menu-toggle text-[#80727B] hover:text-[#545643] focus:outline-none focus:ring-2 focus:ring-[#80727B]/40 rounded-md p-2"
+              class="mobile-menu-toggle text-[#4C4040] hover:text-[#7B8974] focus:outline-none focus:ring-2 focus:ring-[#7B8974]/40 rounded-md p-2"
               aria-expanded="false"
               aria-label="Toggle menu"
               id="mobile-menu-button"
@@ -83,31 +141,31 @@
 
         <!-- Mobile Menu (Hidden by default) -->
         <div class="sm:hidden hidden mobile-menu" id="mobile-menu">
-          <div class="pt-2 pb-3 space-y-1 border-t border-[#80727B]/40">
+          <div class="pt-2 pb-3 space-y-1 border-t border-[#72727B]/40">
             <a
               href="#"
-              class="mobile-nav-link block px-3 py-4 text-base font-medium text-[#80727B] hover:text-[#545643] hover:bg-[#BBACC1] transition-colors duration-200 border-l-4 border-transparent hover:border-[#545643]"
+              class="mobile-nav-link block px-3 py-4 text-base font-medium text-[#4C4040] hover:text-[#7B8974] hover:bg-[#7B8974]/10 transition-colors duration-200 border-l-4 border-transparent hover:border-[#7B8974]"
               data-section="home"
             >
               Home
             </a>
             <a
               href="#works"
-              class="mobile-nav-link block px-3 py-4 text-base font-medium text-[#80727B] hover:text-[#545643] hover:bg-[#BBACC1] transition-colors duration-200 border-l-4 border-transparent hover:border-[#545643]"
+              class="mobile-nav-link block px-3 py-4 text-base font-medium text-[#4C4040] hover:text-[#7B8974] hover:bg-[#7B8974]/10 transition-colors duration-200 border-l-4 border-transparent hover:border-[#7B8974]"
               data-section="works"
             >
               My Works
             </a>
             <a
               href="#about"
-              class="mobile-nav-link block px-3 py-4 text-base font-medium text-[#80727B] hover:text-[#545643] hover:bg-[#BBACC1] transition-colors duration-200 border-l-4 border-transparent hover:border-[#545643]"
+              class="mobile-nav-link block px-3 py-4 text-base font-medium text-[#4C4040] hover:text-[#7B8974] hover:bg-[#7B8974]/10 transition-colors duration-200 border-l-4 border-transparent hover:border-[#7B8974]"
               data-section="about"
             >
               About
             </a>
             <a
               href="#socials"
-              class="mobile-nav-link block px-3 py-4 text-base font-medium text-[#80727B] hover:text-[#545643] hover:bg-[#BBACC1] transition-colors duration-200 border-l-4 border-transparent hover:border-[#545643]"
+              class="mobile-nav-link block px-3 py-4 text-base font-medium text-[#4C4040] hover:text-[#7B8974] hover:bg-[#7B8974]/10 transition-colors duration-200 border-l-4 border-transparent hover:border-[#7B8974]"
               data-section="socials"
             >
               Socials
@@ -120,7 +178,7 @@
       <!-- Hero Section -->
       <section
         id="hero"
-        class="bg-[#F1DEDE] min-h-[calc(100vh-80px)] flex items-center"
+        class="bg-[#F4E8DB] min-h-[calc(100vh-80px)] flex items-center"
       >
         <div
           class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-3xl lg:w-full"
@@ -132,12 +190,12 @@
             <!-- Content Column - Now takes more space -->
             <div class="lg:max-w-3xl text-center lg:text-left">
               <h2
-                class="mb-[clamp(1.5rem,10vw,4.5rem)] lg:mb-10 text-[clamp(2rem,7vw,2.5rem)] lg:text-5xl xl:text-6xl font-serif font-semibold text-[#545643] leading-[1.1] lg:leading-tight xl:leading-tight tracking-tight"
+                class="mb-[clamp(1.5rem,10vw,4.5rem)] lg:mb-10 text-[clamp(2rem,7vw,2.5rem)] lg:text-5xl xl:text-6xl font-serif font-semibold text-[#513D3B] leading-[1.1] lg:leading-tight xl:leading-tight tracking-tight"
               >
                 Web Developer & Digital Creator
               </h2>
               <p
-                class="mb-[clamp(1.5rem,10vw,4.5rem)] lg:mb-12 text-[clamp(1.2rem,4vw,1.4rem)] lg:text-2xl text-[#80727B] font-medium leading-relaxed lg:leading-relaxed max-w-2xl mx-auto lg:mx-0"
+                class="mb-[clamp(1.5rem,10vw,4.5rem)] lg:mb-12 text-[clamp(1.2rem,4vw,1.4rem)] lg:text-2xl text-[#4C4040] font-medium leading-relaxed lg:leading-relaxed max-w-2xl mx-auto lg:mx-0"
               >
                 I build modern websites and digital products with a focus on
                 quality and usability. Alongside my work, I share my journey,
@@ -150,7 +208,7 @@
                 href="https://www.fiverr.com/rishigoyal_"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="inline-flex items-center justify-center text-[#F1DEDE] bg-[#909580] hover:bg-[#545643] px-6 md:px-8 py-3 md:py-4 text-[clamp(1rem,2.5vw,1.125rem)] md:text-lg rounded-md font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200"
+                class="inline-flex items-center justify-center text-[#F4E8DB] bg-[#677464] hover:bg-[#7B8974] px-6 md:px-8 py-3 md:py-4 text-[clamp(1rem,2.5vw,1.125rem)] md:text-lg rounded-md font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200"
               >
                 Let's Collaborate
                 <svg
@@ -174,7 +232,7 @@
               class="terminal-container justify-self-center hidden lg:w-[400px] lg:block"
             >
               <div
-                class="terminal bg-gradient-to-br from-gray-900 to-gray-950 lg:rounded-l-xl lg:rounded-r-none rounded-xl lg:shadow-[-8px_0_20px_rgba(0,0,0,0.5)] shadow-[10px_20px_20px_rgba(0,0,0,0.5)] shadow-black border-l border-[#80727B]/40 overflow-hidden"
+                class="terminal bg-gradient-to-br from-gray-900 to-gray-950 lg:rounded-l-xl lg:rounded-r-none rounded-xl lg:shadow-[-8px_0_20px_rgba(0,0,0,0.5)] shadow-[10px_20px_20px_rgba(0,0,0,0.5)] shadow-black border-l border-[#72727B]/40 overflow-hidden"
               >
                 <!-- Terminal Header -->
                 <div
@@ -272,276 +330,514 @@
       </section>
 
       <!-- My Works Section -->
-      <!-- My Works Section -->
-<section id="works" class="bg-[#F1DEDE] py-12 md:py-20 lg:py-24">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <!-- Section Header -->
-    <div class="mb-12 md:mb-16 lg:mb-20">
-      <div class="flex items-center space-x-3 md:space-x-4 mb-2 md:mb-3 lg:mb-4">
-        <div class="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 bg-[#545643] rounded-full"></div>
-        <h2 class="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-semibold text-[#545643]">
-          My Works
-        </h2>
-      </div>
-      <p class="text-[#80727B] text-sm md:text-base lg:text-lg xl:text-xl max-w-3xl">
-        A curated selection of my professional work across web development and digital products.
-      </p>
-    </div>
-
-    <!-- Websites Subsection -->
-    <div class="mb-20 md:mb-24 lg:mb-28">
-      <div class="flex items-center space-x-4 mb-8 md:mb-10 lg:mb-12">
-        <div class="w-3 h-3 md:w-4 md:h-4 bg-[#909580] rounded-full"></div>
-        <h3 class="text-lg md:text-xl lg:text-2xl xl:text-3xl font-semibold text-[#545643]">
-          Websites & Web Applications
-        </h3>
-      </div>
-      <p class="text-[#80727B] text-sm md:text-base lg:text-lg mb-6 md:mb-8 max-w-3xl">
-        Professional web development projects with modern technologies and responsive design.
-      </p>
-
-      <!-- Websites Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-        <!-- Project 1: Le Jardin -->
-        <div class="work-card bg-[#BBACC1] rounded-xl overflow-hidden border border-[#80727B]/40">
-          <div class="relative overflow-hidden cursor-pointer" data-gallery-trigger>
-            <div class="aspect-video relative">
-              <img
-                src="images/hero-page.png"
-                alt="Le Jardin Restaurant Website"
-                class="w-full h-full object-cover"
-                data-full-image="images/hero-page.png"
-                data-description="Le Jardin Restaurant - Modern landing page"
-              />
-              <div class="absolute top-3 left-3 bg-[#545643] text-[#F1DEDE] px-3 py-1 rounded-full text-xs font-medium">
-                Tag 1
-              </div>
-            </div>
-          </div>
-          <div class="p-4 md:p-5 lg:p-6">
-            <h3 class="text-base md:text-lg lg:text-xl font-semibold text-[#545643] mb-2">
-              Le Jardin - Restaurant
-            </h3>
-            <p class="text-[#80727B] text-xs md:text-sm mb-3">
-              A Great MVP Landing page for a Restaurant with Responsiveness
-            </p>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-2 py-1 bg-green-100 text-green-700 text-xs rounded">Landing Page</span>
-              <span class="px-2 py-1 bg-yellow-100 text-yellow-700 text-xs rounded">Restaurant</span>
-              <span class="px-2 py-1 bg-red-100 text-red-700 text-xs rounded">MVP</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 2: Swaply -->
-        <div class="work-card bg-[#BBACC1] rounded-xl overflow-hidden border border-[#80727B]/40">
-          <div class="relative overflow-hidden cursor-pointer" data-gallery-trigger>
-            <div class="aspect-video relative">
-              <img
-                src="images/swaplyhero-page.png"
-                alt="Swaply Book Store"
-                class="w-full h-full object-cover"
-                data-full-image="images/swaplyhero-page.png"
-                data-description="Swaply - Online book store with Flask backend"
-              />
-              <div class="absolute top-3 left-3 bg-[#80727B] text-[#F1DEDE] px-3 py-1 rounded-full text-xs font-medium">
-                Tag 2
-              </div>
-            </div>
-          </div>
-          <div class="p-4 md:p-5 lg:p-6">
-            <h3 class="text-base md:text-lg lg:text-xl font-semibold text-[#545643] mb-2">
-              Swaply
-            </h3>
-            <p class="text-[#80727B] text-xs md:text-sm mb-3">
-              A Book selling Online store with multiple pages and Flask work and theme Changer
-            </p>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded">Flask</span>
-              <span class="px-2 py-1 bg-indigo-100 text-indigo-700 text-xs rounded">E-commerce</span>
-              <span class="px-2 py-1 bg-pink-100 text-pink-700 text-xs rounded">Theme Changer</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 3: Personal Blog -->
-        <div class="work-card bg-[#BBACC1] rounded-xl overflow-hidden border border-[#80727B]/40">
-          <div class="relative overflow-hidden cursor-pointer" data-gallery-trigger>
-            <div class="aspect-video relative">
-              <img
-                src="images/dotcodrheropage.png"
-                alt="Personal Blog Website"
-                class="w-full h-full object-cover"
-                data-full-image="images/dotcodrheropage.png"
-                data-description="Personal Blog Page - Built with Tailwind CSS"
-              />
-              <div class="absolute top-3 left-3 bg-[#909580] text-[#F1DEDE] px-3 py-1 rounded-full text-xs font-medium">
-                Tag 3
-              </div>
-            </div>
-          </div>
-          <div class="p-4 md:p-5 lg:p-6">
-            <h3 class="text-base md:text-lg lg:text-xl font-semibold text-[#545643] mb-2">
-              Personal Blog Page
-            </h3>
-            <p class="text-[#80727B] text-xs md:text-sm mb-3">
-              First Website with Tailwind and Complete Responsiveness
-            </p>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded">Tailwind CSS</span>
-              <span class="px-2 py-1 bg-green-100 text-green-700 text-xs rounded">Responsive</span>
-              <span class="px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded">Blog</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Notion Templates Subsection -->
-    <div class="mb-16 md:mb-20 lg:mb-24">
-      <div class="flex items-center space-x-4 mb-8 md:mb-10 lg:mb-12">
-        <div class="w-3 h-3 md:w-4 md:h-4 bg-[#80727B] rounded-full"></div>
-        <h3 class="text-lg md:text-xl lg:text-2xl xl:text-3xl font-semibold text-[#545643]">
-          Notion Templates
-        </h3>
-      </div>
-      <p class="text-[#80727B] text-sm md:text-base lg:text-lg mb-6 md:mb-8 max-w-3xl">
-        Productivity templates designed to streamline workflows and boost efficiency.
-      </p>
-
-      <!-- Templates Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-        <!-- Template 1: Ultimate Productivity -->
-        <div class="work-card bg-[#BBACC1] rounded-xl overflow-hidden border border-[#80727B]/40">
-          <div class="relative overflow-hidden cursor-pointer" data-gallery-trigger>
-            <div class="aspect-video relative">
-              <img 
-                src="images/contentplanner.png" 
-                alt="Ultimate Productivity System Notion Template" 
-                class="w-full h-full object-cover"
-                data-full-image="images/contentplanner.png"
-                data-description="Basic Content Planner - Complete task management"
+      <section id="works" class="bg-[#F4E8DB] py-12 md:py-20 lg:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <!-- Section Header -->
+          <div class="mb-12 md:mb-16 lg:mb-20">
+            <div
+              class="flex items-center space-x-3 md:space-x-4 mb-2 md:mb-3 lg:mb-4"
+            >
+              <div
+                class="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 bg-[#513D3B] rounded-full"
+              ></div>
+              <h2
+                class="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-semibold text-[#513D3B]"
               >
-              <div class="absolute top-3 left-3 bg-[#545643] text-[#F1DEDE] px-3 py-1 rounded-full text-xs font-medium">
-                Tag 1
-              </div>
+                My Works
+              </h2>
             </div>
-          </div>
-          <div class="p-4 md:p-5 lg:p-6">
-            <h3 class="text-base md:text-lg lg:text-xl font-semibold text-[#545643] mb-2">
-              Basic Content-Planner
-            </h3>
-            <p class="text-[#80727B] text-xs md:text-sm mb-3">
-              A simple Notion template designed to help you plan, write, schedule, and track your content in one place.
+            <p
+              class="text-[#4C4040] text-sm md:text-base lg:text-lg xl:text-xl max-w-3xl"
+            >
+              A curated selection of my professional work across web development
+              and digital products.
             </p>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-2 py-1 bg-green-100 text-green-700 text-xs rounded">Task Manager</span>
-              <!-- <span class="px-2 py-1 bg-yellow-100 text-yellow-700 text-xs rounded"></span> -->
-              <span class="px-2 py-1 bg-red-100 text-red-700 text-xs rounded">Content Planner</span>
-            </div>
           </div>
-        </div>
 
-        <!-- Template 2: Student Planner -->
-        <div class="work-card bg-[#BBACC1] rounded-xl overflow-hidden border border-[#80727B]/40">
-          <div class="relative overflow-hidden cursor-pointer" data-gallery-trigger>
-            <div class="aspect-video relative">
-              <img 
-                src="images/notion-template-2.jpg" 
-                alt="Personal Dashboard" 
-                class="w-full h-full object-cover"
-                data-full-image="images/notion-template-2.jpg"
-                data-description="Student Planner - Academic organization template"
+          <!-- Websites Subsection -->
+          <div class="mb-20 md:mb-24 lg:mb-28">
+            <div class="flex items-center space-x-4 mb-8 md:mb-10 lg:mb-12">
+              <div
+                class="w-3 h-3 md:w-4 md:h-4 bg-[#7B8974] rounded-full"
+              ></div>
+              <h3
+                class="text-lg md:text-xl lg:text-2xl xl:text-3xl font-semibold text-[#513D3B]"
               >
-              <div class="absolute top-3 left-3 bg-[#80727B] text-[#F1DEDE] px-3 py-1 rounded-full text-xs font-medium">
-                Tag 2
-              </div>
+                Websites & Web Applications
+              </h3>
             </div>
-          </div>
-          <div class="p-4 md:p-5 lg:p-6">
-            <h3 class="text-base md:text-lg lg:text-xl font-semibold text-[#545643] mb-2">
-              Personal Dashboard
-            </h3>
-            <p class="text-[#80727B] text-xs md:text-sm mb-3">
-              All-in-one organizer
+            <p
+              class="text-[#4C4040] text-sm md:text-base lg:text-lg mb-6 md:mb-8 max-w-3xl"
+            >
+              Professional web development projects with modern technologies and
+              responsive design.
             </p>
-            <div class="flex flex-wrap gap-2">
-              <!-- <span class="px-2 py-1 bg-indigo-100 text-indigo-700 text-xs rounded">Planner</span>
-              <span class="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded">Habit Tracker</span>
-              <span class="px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded">Expense Calculator</span> -->
-              <span class="px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded">In Progress</span>
-            </div>
-          </div>
-        </div>
 
-        <!-- Template 3: Content Creator Hub -->
-        <div class="work-card bg-[#BBACC1] rounded-xl overflow-hidden border border-[#80727B]/40">
-          <div class="relative overflow-hidden cursor-pointer" data-gallery-trigger>
-            <div class="aspect-video relative">
-              <img 
-                src="images/notion-template-3.jpg" 
-                alt="Freelance Tracker" 
-                class="w-full h-full object-cover"
-                data-full-image="images/notion-template-3.jpg"
-                data-description="Content Creator Hub - Social media planning system"
+            <!-- Websites Grid -->
+            <!-- Websites Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+              <!-- Project 1: Le Jardin -->
+              <div
+                class="work-card group cursor-pointer"
+                data-image-gallery="images/hero-page.png"
+                data-image-title="Le Jardin Restaurant Website"
+                data-image-description="A Great MVP Landing page for a Restaurant with Responsiveness"
               >
-              <div class="absolute top-3 left-3 bg-[#909580] text-[#F1DEDE] px-3 py-1 rounded-full text-xs font-medium">
-                Tag 3
+                <div class="h-full flex flex-col">
+                  <div
+                    class="bg-white/80 backdrop-blur-sm rounded-xl overflow-hidden border border-[#72727B]/40 hover:border-[#7B8974]/60 transition-all duration-300 group-hover:shadow-xl flex flex-col h-full"
+                  >
+                    <div
+                      class="aspect-video relative overflow-hidden flex-shrink-0"
+                    >
+                      <img
+                        src="images/hero-page.png"
+                        alt="Le Jardin Restaurant Website"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div
+                        class="absolute top-3 left-3 bg-[#7B8974] text-[#F4E8DB] px-3 py-1 rounded-full text-xs font-medium"
+                      >
+                        Restaurant
+                      </div>
+                      <!-- View Full Image Overlay -->
+                      <div
+                        class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100"
+                      >
+                        <div
+                          class="bg-white/90 backdrop-blur-sm rounded-lg px-4 py-2 flex items-center space-x-2"
+                        >
+                          <i class="fas fa-expand text-[#513D3B]"></i>
+                          <span class="text-[#513D3B] text-sm font-medium"
+                            >View Full Image</span
+                          >
+                        </div>
+                      </div>
+                    </div>
+                    <div class="p-4 md:p-5 lg:p-6 flex flex-col flex-grow">
+                      <h3
+                        class="text-base md:text-lg lg:text-xl font-semibold text-[#513D3B] mb-2"
+                      >
+                        Le Jardin - Restaurant
+                      </h3>
+                      <p
+                        class="text-[#4C4040] text-xs md:text-sm mb-3 flex-grow"
+                      >
+                        A Great MVP Landing page for a Restaurant with
+                        Responsiveness
+                      </p>
+                      <div class="flex flex-wrap gap-2 mt-auto">
+                        <span
+                          class="px-2 py-1 bg-[#7B8974]/20 text-[#677464] text-xs rounded"
+                          >Landing Page</span
+                        >
+                        <span
+                          class="px-2 py-1 bg-[#72727B]/20 text-[#4C4040] text-xs rounded"
+                          >Restaurant</span
+                        >
+                        <span
+                          class="px-2 py-1 bg-[#513D3B]/20 text-[#513D3B] text-xs rounded"
+                          >MVP</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Project 2: Swaply -->
+              <div
+                class="work-card group cursor-pointer"
+                data-image-gallery="images/swaplyhero-page.png"
+                data-image-title="Swaply Book Store"
+                data-image-description="A Book selling Online store with multiple pages and Flask work and theme Changer"
+              >
+                <div class="h-full flex flex-col">
+                  <div
+                    class="bg-white/80 backdrop-blur-sm rounded-xl overflow-hidden border border-[#72727B]/40 hover:border-[#7B8974]/60 transition-all duration-300 group-hover:shadow-xl flex flex-col h-full"
+                  >
+                    <div
+                      class="aspect-video relative overflow-hidden flex-shrink-0"
+                    >
+                      <img
+                        src="images/swaplyhero-page.png"
+                        alt="Swaply Book Store"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div
+                        class="absolute top-3 left-3 bg-[#677464] text-[#F4E8DB] px-3 py-1 rounded-full text-xs font-medium"
+                      >
+                        E-commerce
+                      </div>
+                      <!-- View Full Image Overlay -->
+                      <div
+                        class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100"
+                      >
+                        <div
+                          class="bg-white/90 backdrop-blur-sm rounded-lg px-4 py-2 flex items-center space-x-2"
+                        >
+                          <i class="fas fa-expand text-[#513D3B]"></i>
+                          <span class="text-[#513D3B] text-sm font-medium"
+                            >View Full Image</span
+                          >
+                        </div>
+                      </div>
+                    </div>
+                    <div class="p-4 md:p-5 lg:p-6 flex flex-col flex-grow">
+                      <h3
+                        class="text-base md:text-lg lg:text-xl font-semibold text-[#513D3B] mb-2"
+                      >
+                        Swaply
+                      </h3>
+                      <p
+                        class="text-[#4C4040] text-xs md:text-sm mb-3 flex-grow"
+                      >
+                        A Book selling Online store with multiple pages and
+                        Flask work and theme Changer
+                      </p>
+                      <div class="flex flex-wrap gap-2 mt-auto">
+                        <span
+                          class="px-2 py-1 bg-[#7B8974]/20 text-[#677464] text-xs rounded"
+                          >Flask</span
+                        >
+                        <span
+                          class="px-2 py-1 bg-[#72727B]/20 text-[#4C4040] text-xs rounded"
+                          >E-commerce</span
+                        >
+                        <span
+                          class="px-2 py-1 bg-[#513D3B]/20 text-[#513D3B] text-xs rounded"
+                          >Theme Changer</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Project 3: Personal Blog -->
+              <div
+                class="work-card group cursor-pointer"
+                data-image-gallery="images/dotcodrheropage.png"
+                data-image-title="Personal Blog Website"
+                data-image-description="First Website with Tailwind and Complete Responsiveness"
+              >
+                <div class="h-full flex flex-col">
+                  <div
+                    class="bg-white/80 backdrop-blur-sm rounded-xl overflow-hidden border border-[#72727B]/40 hover:border-[#7B8974]/60 transition-all duration-300 group-hover:shadow-xl flex flex-col h-full"
+                  >
+                    <div
+                      class="aspect-video relative overflow-hidden flex-shrink-0"
+                    >
+                      <img
+                        src="images/dotcodrheropage.png"
+                        alt="Personal Blog Website"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div
+                        class="absolute top-3 left-3 bg-[#7B8974] text-[#F4E8DB] px-3 py-1 rounded-full text-xs font-medium"
+                      >
+                        Blog
+                      </div>
+                      <!-- View Full Image Overlay -->
+                      <div
+                        class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100"
+                      >
+                        <div
+                          class="bg-white/90 backdrop-blur-sm rounded-lg px-4 py-2 flex items-center space-x-2"
+                        >
+                          <i class="fas fa-expand text-[#513D3B]"></i>
+                          <span class="text-[#513D3B] text-sm font-medium"
+                            >View Full Image</span
+                          >
+                        </div>
+                      </div>
+                    </div>
+                    <div class="p-4 md:p-5 lg:p-6 flex flex-col flex-grow">
+                      <h3
+                        class="text-base md:text-lg lg:text-xl font-semibold text-[#513D3B] mb-2"
+                      >
+                        Personal Blog Page
+                      </h3>
+                      <p
+                        class="text-[#4C4040] text-xs md:text-sm mb-3 flex-grow"
+                      >
+                        First Website with Tailwind and Complete Responsiveness
+                      </p>
+                      <div class="flex flex-wrap gap-2 mt-auto">
+                        <span
+                          class="px-2 py-1 bg-[#7B8974]/20 text-[#677464] text-xs rounded"
+                          >Tailwind CSS</span
+                        >
+                        <span
+                          class="px-2 py-1 bg-[#72727B]/20 text-[#4C4040] text-xs rounded"
+                          >Responsive</span
+                        >
+                        <span
+                          class="px-2 py-1 bg-[#513D3B]/20 text-[#513D3B] text-xs rounded"
+                          >Blog</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          <div class="p-4 md:p-5 lg:p-6">
-            <h3 class="text-base md:text-lg lg:text-xl font-semibold text-[#545643] mb-2">
-              Freelance Tracker
-            </h3>
-            <p class="text-[#80727B] text-xs md:text-sm mb-3">
-              Project planning, Earnings, Reviews, and Client management
+
+          <!-- Notion Templates Subsection -->
+          <div class="mb-16 md:mb-20 lg:mb-24">
+            <div class="flex items-center space-x-4 mb-8 md:mb-10 lg:mb-12">
+              <div
+                class="w-3 h-3 md:w-4 md:h-4 bg-[#72727B] rounded-full"
+              ></div>
+              <h3
+                class="text-lg md:text-xl lg:text-2xl xl:text-3xl font-semibold text-[#513D3B]"
+              >
+                Notion Templates
+              </h3>
+            </div>
+            <p
+              class="text-[#4C4040] text-sm md:text-base lg:text-lg mb-6 md:mb-8 max-w-3xl"
+            >
+              Productivity templates designed to streamline workflows and boost
+              efficiency.
             </p>
-            <div class="flex flex-wrap gap-2">
-              <!-- <span class="px-2 py-1 bg-pink-100 text-pink-700 text-xs rounded">Project Calendar</span>
-              <span class="px-2 py-1 bg-teal-100 text-teal-700 text-xs rounded">Analytics</span> -->
-              <span class="px-2 py-1 bg-orange-100 text-orange-700 text-xs rounded">In Progress</span>
+
+            <!-- Templates Grid -->
+            <!-- Templates Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+              <!-- Template 1: Ultimate Productivity -->
+              <div
+                class="work-card group cursor-pointer"
+                data-image-gallery="images/contentplanner.png"
+                data-image-title="Basic Content Planner Notion Template"
+                data-image-description="A simple Notion template designed to help you plan, write, schedule, and track your content in one place."
+              >
+                <div class="h-full flex flex-col">
+                  <div
+                    class="bg-white/80 backdrop-blur-sm rounded-xl overflow-hidden border border-[#72727B]/40 hover:border-[#7B8974]/60 transition-all duration-300 group-hover:shadow-xl flex flex-col h-full"
+                  >
+                    <div
+                      class="aspect-video relative overflow-hidden flex-shrink-0"
+                    >
+                      <img
+                        src="images/contentplanner.png"
+                        alt="Ultimate Productivity System Notion Template"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div
+                        class="absolute top-3 left-3 bg-[#7B8974] text-[#F4E8DB] px-3 py-1 rounded-full text-xs font-medium"
+                      >
+                        Template
+                      </div>
+                      <!-- View Full Image Overlay -->
+                      <div
+                        class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100"
+                      >
+                        <div
+                          class="bg-white/90 backdrop-blur-sm rounded-lg px-4 py-2 flex items-center space-x-2"
+                        >
+                          <i class="fas fa-expand text-[#513D3B]"></i>
+                          <span class="text-[#513D3B] text-sm font-medium"
+                            >View Full Image</span
+                          >
+                        </div>
+                      </div>
+                    </div>
+                    <div class="p-4 md:p-5 lg:p-6 flex flex-col flex-grow">
+                      <h3
+                        class="text-base md:text-lg lg:text-xl font-semibold text-[#513D3B] mb-2"
+                      >
+                        Basic Content-Planner
+                      </h3>
+                      <p
+                        class="text-[#4C4040] text-xs md:text-sm mb-3 flex-grow"
+                      >
+                        A simple Notion template designed to help you plan,
+                        write, schedule, and track your content in one place.
+                      </p>
+                      <div class="flex flex-wrap gap-2 mt-auto">
+                        <span
+                          class="px-2 py-1 bg-[#7B8974]/20 text-[#677464] text-xs rounded"
+                          >Task Manager</span
+                        >
+                        <span
+                          class="px-2 py-1 bg-[#513D3B]/20 text-[#513D3B] text-xs rounded"
+                          >Content Planner</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Template 2: Student Planner -->
+              <div
+                class="work-card group cursor-pointer"
+                data-image-gallery="images/notion-template-2.jpg"
+                data-image-title="Personal Dashboard Notion Template"
+                data-image-description="All-in-one organizer template in progress"
+              >
+                <div class="h-full flex flex-col">
+                  <div
+                    class="bg-white/80 backdrop-blur-sm rounded-xl overflow-hidden border border-[#72727B]/40 hover:border-[#7B8974]/60 transition-all duration-300 group-hover:shadow-xl flex flex-col h-full"
+                  >
+                    <div
+                      class="aspect-video relative overflow-hidden flex-shrink-0"
+                    >
+                      <img
+                        src="images/notion-template-2.jpg"
+                        alt="Personal Dashboard"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div
+                        class="absolute top-3 left-3 bg-[#677464] text-[#F4E8DB] px-3 py-1 rounded-full text-xs font-medium"
+                      >
+                        Template
+                      </div>
+                      <!-- View Full Image Overlay -->
+                      <div
+                        class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100"
+                      >
+                        <div
+                          class="bg-white/90 backdrop-blur-sm rounded-lg px-4 py-2 flex items-center space-x-2"
+                        >
+                          <i class="fas fa-expand text-[#513D3B]"></i>
+                          <span class="text-[#513D3B] text-sm font-medium"
+                            >View Full Image</span
+                          >
+                        </div>
+                      </div>
+                    </div>
+                    <div class="p-4 md:p-5 lg:p-6 flex flex-col flex-grow">
+                      <h3
+                        class="text-base md:text-lg lg:text-xl font-semibold text-[#513D3B] mb-2"
+                      >
+                        Personal Dashboard
+                      </h3>
+                      <p
+                        class="text-[#4C4040] text-xs md:text-sm mb-3 flex-grow"
+                      >
+                        All-in-one organizer
+                      </p>
+                      <div class="flex flex-wrap gap-2 mt-auto">
+                        <span
+                          class="px-2 py-1 bg-[#72727B]/20 text-[#4C4040] text-xs rounded"
+                          >In Progress</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Template 3: Content Creator Hub -->
+              <div
+                class="work-card group cursor-pointer"
+                data-image-gallery="images/notion-template-3.jpg"
+                data-image-title="Freelance Tracker Notion Template"
+                data-image-description="Project planning, Earnings, Reviews, and Client management template in progress"
+              >
+                <div class="h-full flex flex-col">
+                  <div
+                    class="bg-white/80 backdrop-blur-sm rounded-xl overflow-hidden border border-[#72727B]/40 hover:border-[#7B8974]/60 transition-all duration-300 group-hover:shadow-xl flex flex-col h-full"
+                  >
+                    <div
+                      class="aspect-video relative overflow-hidden flex-shrink-0"
+                    >
+                      <img
+                        src="images/notion-template-3.jpg"
+                        alt="Freelance Tracker"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div
+                        class="absolute top-3 left-3 bg-[#7B8974] text-[#F4E8DB] px-3 py-1 rounded-full text-xs font-medium"
+                      >
+                        Template
+                      </div>
+                      <!-- View Full Image Overlay -->
+                      <div
+                        class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100"
+                      >
+                        <div
+                          class="bg-white/90 backdrop-blur-sm rounded-lg px-4 py-2 flex items-center space-x-2"
+                        >
+                          <i class="fas fa-expand text-[#513D3B]"></i>
+                          <span class="text-[#513D3B] text-sm font-medium"
+                            >View Full Image</span
+                          >
+                        </div>
+                      </div>
+                    </div>
+                    <div class="p-4 md:p-5 lg:p-6 flex flex-col flex-grow">
+                      <h3
+                        class="text-base md:text-lg lg:text-xl font-semibold text-[#513D3B] mb-2"
+                      >
+                        Freelance Tracker
+                      </h3>
+                      <p
+                        class="text-[#4C4040] text-xs md:text-sm mb-3 flex-grow"
+                      >
+                        Project planning, Earnings, Reviews, and Client
+                        management
+                      </p>
+                      <div class="flex flex-wrap gap-2 mt-auto">
+                        <span
+                          class="px-2 py-1 bg-[#72727B]/20 text-[#4C4040] text-xs rounded"
+                          >In Progress</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
 
-    <!-- Instagram Button for More Works -->
-    <div class="text-center mt-12 md:mt-16 pt-8 border-t border-[#80727B]/20">
-      <p class="text-[#80727B] text-sm md:text-base mb-4">
-        Want to see more of my work? Follow me on Instagram for updates, behind-the-scenes, and new projects!
-      </p>
-      <a 
-        href="https://www.instagram.com/layer.1_/" 
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-flex items-center justify-center bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 px-6 md:px-8 py-3 md:py-4 text-[clamp(1rem,2.5vw,1.125rem)] md:text-lg rounded-md font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200"
-      >
-        <svg class="w-5 h-5 mr-2 md:mr-3" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073z"/>
-        </svg>
-        See More Work on Instagram
-        <svg
-          class="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M14 5l7 7m0 0l-7 7m7-7H3"
-          />
-        </svg>
-      </a>
-    </div>
-  </div>
-</section>
+          <!-- Instagram Button for More Works -->
+          <div
+            class="text-center mt-12 md:mt-16 pt-8 border-t border-[#72727B]/20"
+          >
+            <p class="text-[#4C4040] text-sm md:text-base mb-4">
+              Want to see more of my work? Follow me on Instagram for updates,
+              behind-the-scenes, and new projects!
+            </p>
+            <a
+              href="https://www.instagram.com/layer.1_/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center bg-gradient-to-r from-[#7B8974] to-[#677464] text-[#F4E8DB] hover:from-[#677464] hover:to-[#7B8974] px-6 md:px-8 py-3 md:py-4 text-[clamp(1rem,2.5vw,1.125rem)] md:text-lg rounded-md font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200"
+            >
+              <svg
+                class="w-5 h-5 mr-2 md:mr-3"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073z"
+                />
+              </svg>
+              See More Work on Instagram
+              <svg
+                class="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M14 5l7 7m0 0l-7 7m7-7H3"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
 
       <!-- About Section -->
-      <section id="about" class="bg-[#F1DEDE] py-12 md:py-20 lg:py-24">
+      <section id="about" class="bg-[#F4E8DB] py-12 md:py-20 lg:py-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <!-- Section Header -->
           <div class="mb-8 md:mb-12 lg:mb-16">
@@ -549,16 +845,16 @@
               class="flex items-center space-x-3 md:space-x-4 mb-2 md:mb-3 lg:mb-4"
             >
               <div
-                class="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 bg-[#545643] rounded-full"
+                class="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 bg-[#513D3B] rounded-full"
               ></div>
               <h2
-                class="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-semibold text-[#545643]"
+                class="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-semibold text-[#513D3B]"
               >
                 About Me
               </h2>
             </div>
             <p
-              class="text-[#80727B] text-sm md:text-base lg:text-lg xl:text-xl max-w-3xl"
+              class="text-[#4C4040] text-sm md:text-base lg:text-lg xl:text-xl max-w-3xl"
             >
               Developer + Content Creator crafting digital experiences,
               products, and templates while sharing knowledge through engaging
@@ -572,7 +868,7 @@
             <!-- Terminal Photo Card - On LEFT for desktop -->
             <div class="lg:order-1 lg:w-1/2">
               <div
-                class="terminal-photo bg-gradient-to-br from-gray-900 to-gray-950 rounded-xl lg:rounded-l-3xl lg:rounded-r-none lg:shadow-[-8px_0_20px_rgba(0,0,0,0.5)] shadow-[10px_20px_20px_rgba(0,0,0,0.5)] shadow-black border lg:border-r-4 lg:border-l-0 border-[#80727B]/40 overflow-hidden max-w-md mx-auto lg:mx-0 lg:max-w-none"
+                class="terminal-photo bg-gradient-to-br from-gray-900 to-gray-950 rounded-xl lg:rounded-l-3xl lg:rounded-r-none lg:shadow-[-8px_0_20px_rgba(0,0,0,0.5)] shadow-[10px_20px_20px_rgba(0,0,0,0.5)] shadow-black border lg:border-r-4 lg:border-l-0 border-[#72727B]/40 overflow-hidden max-w-md mx-auto lg:mx-0 lg:max-w-none"
               >
                 <!-- Terminal Header -->
                 <div
@@ -619,8 +915,8 @@
                       class="font-mono text-white text-[0.75rem] md:text-[0.9rem]"
                     >
                       <div class="flex">
-                        <span class="text-[#909580] mr-2">$</span>
-                        <span class="text-[#909580]">whoami --details</span>
+                        <span class="text-[#7B8974] mr-2">$</span>
+                        <span class="text-[#7B8974]">whoami --details</span>
                       </div>
                       <div class="text-white mt-1 ml-4">
                         Web Developer & Digital Creator
@@ -654,37 +950,42 @@
             <div class="lg:order-2 lg:w-1/2">
               <div class="max-w-2xl lg:max-w-none">
                 <h3
-                  class="text-2xl md:text-3xl lg:text-4xl font-serif font-semibold text-[#545643] mb-4 md:mb-6"
+                  class="text-2xl md:text-3xl lg:text-4xl font-serif font-semibold text-[#513D3B] mb-4 md:mb-6"
                 >
                   Building digital experiences that matter
                 </h3>
 
                 <div class="space-y-4 md:space-y-5 lg:space-y-6">
                   <p
-                    class="text-[#80727B] text-base md:text-lg leading-relaxed"
+                    class="text-[#4C4040] text-base md:text-lg leading-relaxed"
                   >
-                   I’m <strong>Yash Khandelwal</strong>, a passionate developer focused on building digital experiences that balance clean design with solid functionality. What started as curiosity has grown into a disciplined practice of creating websites and products that are simple, effective, and user-focused. .
+                    I'm <strong class="text-[#513D3B]">Yash Khandelwal</strong>,
+                    , a passionate developer focused on building digital
+                    experiences that balance clean design with solid
+                    functionality. What began as curiosity has evolved into a
+                    disciplined practice of creating websites, products, and
+                    systems that are simple, effective, and user-focused.
                   </p>
 
                   <p
-                    class="text-[#80727B] text-base md:text-lg leading-relaxed"
+                    class="text-[#4C4040] text-base md:text-lg leading-relaxed"
                   >
-                    I’m the founder of <strong>Layer</strong>, a brand dedicated to crafting high-quality digital products such as website templates and tools designed for real-world use. My work blends technical precision with thoughtful design, ensuring every project is both reliable and engaging.
+                    I’m building <strong>Layer</strong> as an open creative and
+                    technical space where ideas turn into real, impactful work.
+                    Right now, I’m creating and selling digital products,
+                    working on web development projects, and sharing the journey
+                    through content creation—while using Layer as a foundation
+                    to experiment, build boldly, and grow into something much
+                    bigger over time.
                   </p>
-                  <p
-                    class="text-[#80727B] text-base md:text-lg leading-relaxed"
-                  >
-                    I’m now building Layer from the ground up, with a long-term vision of delivering meaningful digital experiences while continuously growing as a developer.
-                  </p>
-
                   <!-- Skills Terminal -->
                   <div
-                    class="mt-6 md:mt-8 p-4 md:p-5 lg:p-6 bg-[#BBACC1] rounded-xl border border-[#80727B]/40"
+                    class="mt-6 md:mt-8 p-4 md:p-5 lg:p-6 bg-white/80 backdrop-blur-sm rounded-xl border border-[#72727B]/40"
                   >
                     <div class="flex items-center space-x-2 mb-4">
-                      <div class="w-2 h-2 bg-[#545643] rounded-full"></div>
+                      <div class="w-2 h-2 bg-[#7B8974] rounded-full"></div>
                       <h4
-                        class="text-lg md:text-xl font-semibold text-[#545643]"
+                        class="text-lg md:text-xl font-semibold text-[#513D3B]"
                       >
                         Core Expertise
                       </h4>
@@ -693,43 +994,49 @@
                     <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
                       <div class="flex items-center space-x-2">
                         <div
-                          class="w-1.5 h-1.5 bg-green-500 rounded-full"
+                          class="w-1.5 h-1.5 bg-[#7B8974] rounded-full"
                         ></div>
-                        <span class="text-sm md:text-base text-[#80727B]"
+                        <span class="text-sm md:text-base text-[#4C4040]"
                           >Frontend Development</span
                         >
                       </div>
                       <div class="flex items-center space-x-2">
-                        <div class="w-1.5 h-1.5 bg-blue-500 rounded-full"></div>
-                        <span class="text-sm md:text-base text-[#80727B]"
+                        <div
+                          class="w-1.5 h-1.5 bg-[#677464] rounded-full"
+                        ></div>
+                        <span class="text-sm md:text-base text-[#4C4040]"
                           >UI/UX Design</span
                         >
                       </div>
                       <div class="flex items-center space-x-2">
                         <div
-                          class="w-1.5 h-1.5 bg-purple-500 rounded-full"
+                          class="w-1.5 h-1.5 bg-[#72727B] rounded-full"
                         ></div>
-                        <span class="text-sm md:text-base text-[#80727B]"
+                        <span class="text-sm md:text-base text-[#4C4040]"
                           >Responsive Design</span
                         >
                       </div>
                       <div class="flex items-center space-x-2">
                         <div
-                          class="w-1.5 h-1.5 bg-yellow-500 rounded-full"
+                          class="w-1.5 h-1.5 bg-[#513D3B] rounded-full"
                         ></div>
-                        <span class="text-sm md:text-base text-[#80727B]"
+                        <span class="text-sm md:text-base text-[#4C4040]"
                           >Performance</span
                         >
                       </div>
                       <div class="flex items-center space-x-2">
-                        <div class="w-1.5 h-1.5 bg-red-500 rounded-full"></div>
-                        <span class="text-sm md:text-base text-[#80727B]"
+                        <div
+                          class="w-1.5 h-1.5 bg-[#7B8974] rounded-full"
+                        ></div>
+                        <span class="text-sm md:text-base text-[#4C4040]"
                           >Accessibility</span
                         >
                       </div>
                       <div class="flex items-center space-x-2">
-                        <div class="w-1.5 h-1.5 bg-cyan-500 rounded-full"></div>
-                        <span class="text-sm md:text-base text-[#80727B]"
+                        <div
+                          class="w-1.5 h-1.5 bg-[#677464] rounded-full"
+                        ></div>
+                        <span class="text-sm md:text-base text-[#4C4040]"
                           >Clean Code</span
                         >
                       </div>
@@ -741,7 +1048,7 @@
                     class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mt-6 md:mt-8"
                   >
                     <div
-                      class="text-center p-3 md:p-4 bg-[#545643] text-[#F1DEDE] rounded-lg"
+                      class="text-center p-3 md:p-4 bg-[#513D3B] text-[#F4E8DB] rounded-lg"
                     >
                       <div class="text-xl md:text-2xl lg:text-3xl font-bold">
                         1+
@@ -751,7 +1058,7 @@
                       </div>
                     </div>
                     <div
-                      class="text-center p-3 md:p-4 bg-[#80727B] text-[#F1DEDE] rounded-lg"
+                      class="text-center p-3 md:p-4 bg-[#72727B] text-[#F4E8DB] rounded-lg"
                     >
                       <div class="text-xl md:text-2xl lg:text-3xl font-bold">
                         10+
@@ -759,7 +1066,7 @@
                       <div class="text-xs md:text-sm opacity-90">Projects</div>
                     </div>
                     <div
-                      class="text-center p-3 md:p-4 bg-[#909580] text-[#F1DEDE] rounded-lg"
+                      class="text-center p-3 md:p-4 bg-[#7B8974] text-[#F4E8DB] rounded-lg"
                     >
                       <div class="text-xl md:text-2xl lg:text-3xl font-bold">
                         1
@@ -769,7 +1076,7 @@
                       </div>
                     </div>
                     <div
-                      class="text-center p-3 md:p-4 bg-[#BBACC1] text-[#545643] rounded-lg"
+                      class="text-center p-3 md:p-4 bg-white/80 backdrop-blur-sm text-[#513D3B] rounded-lg border border-[#72727B]/40"
                     >
                       <div class="text-xl md:text-2xl lg:text-3xl font-bold">
                         100%
@@ -784,7 +1091,7 @@
                   <div class="pt-4 md:pt-5 lg:pt-6">
                     <a
                       href="#socials"
-                      class="inline-flex items-center text-[#F1DEDE] bg-[#909580] hover:bg-[#545643] px-5 py-3 md:px-6 md:py-3.5 lg:px-8 lg:py-4 text-sm md:text-base lg:text-lg rounded-md font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200"
+                      class="inline-flex items-center text-[#F4E8DB] bg-[#677464] hover:bg-[#7B8974] px-5 py-3 md:px-6 md:py-3.5 lg:px-8 lg:py-4 text-sm md:text-base lg:text-lg rounded-md font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200"
                     >
                       Let's Work Together
                       <svg
@@ -810,7 +1117,7 @@
       </section>
 
       <!-- Social Links Section -->
-      <section id="socials" class="bg-[#F1DEDE] py-12 md:py-20 lg:py-24">
+      <section id="socials" class="bg-[#F4E8DB] py-12 md:py-20 lg:py-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <!-- Section Header -->
           <div class="mb-8 md:mb-12 lg:mb-16">
@@ -818,16 +1125,16 @@
               class="flex items-center space-x-3 md:space-x-4 mb-2 md:mb-3 lg:mb-4"
             >
               <div
-                class="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 bg-[#545643] rounded-full"
+                class="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 bg-[#513D3B] rounded-full"
               ></div>
               <h2
-                class="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-semibold text-[#545643]"
+                class="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-semibold text-[#513D3B]"
               >
                 Connect With Me
               </h2>
             </div>
             <p
-              class="text-[#80727B] text-sm md:text-base lg:text-lg xl:text-xl max-w-3xl"
+              class="text-[#4C4040] text-sm md:text-base lg:text-lg xl:text-xl max-w-3xl"
             >
               Find me across platforms. Let's connect, collaborate, or just say
               hello!
@@ -837,7 +1144,7 @@
           <!-- Terminal Links Container -->
           <div class="max-w-3xl mx-auto">
             <div
-              class="terminal-links bg-gradient-to-br from-gray-900 to-gray-950 rounded-r-2xl rounded-l-none md:rounded-r-3xl md:rounded-l-none shadow-[10px_20px_20px_rgba(0,0,0,0.5)] shadow-black border-l-4 border-[#80727B]/40 overflow-hidden"
+              class="terminal-links bg-gradient-to-br from-gray-900 to-gray-950 rounded-r-2xl rounded-l-none md:rounded-r-3xl md:rounded-l-none shadow-[10px_20px_20px_rgba(0,0,0,0.5)] shadow-black border-l-4 border-[#72727B]/40 overflow-hidden"
             >
               <!-- Terminal Header -->
               <div
@@ -884,7 +1191,8 @@
                       >
                       <span class="text-gray-400 mr-2">➜</span>
                       <a
-                        href="https://www.linkedin.com/in/yashkh-layer/" target="_blank"
+                        href="https://www.linkedin.com/in/yashkh-layer/"
+                        target="_blank"
                         class="social-link text-blue-400 hover:text-blue-300 transition-colors truncate hover:underline"
                         data-platform="linkedin"
                       >
@@ -895,11 +1203,29 @@
                         >Professional</span
                       >
                     </div>
+                    <div class="flex items-center group">
+                      <span class="text-gray-500 mr-3 w-6 text-right"
+                        >[02]</span
+                      >
+                      <span class="text-gray-400 mr-2">➜</span>
+                      <a
+                        href="https://x.com/DevYashkh"
+                        target="_blank"
+                        class="social-link text-blue-400 hover:text-blue-300 transition-colors truncate hover:underline"
+                        data-platform="linkedin"
+                      >
+                        X.com/in/yashkh
+                      </a>
+                      <span
+                        class="ml-2 text-xs text-gray-500 px-1.5 py-0.5 bg-gray-800 rounded flex-shrink-0"
+                        >Professional</span
+                      >
+                    </div>
 
                     <!-- GitHub -->
                     <div class="flex items-center group">
                       <span class="text-gray-500 mr-3 w-6 text-right"
-                        >[02]</span
+                        >[03]</span
                       >
                       <span class="text-gray-400 mr-2">➜</span>
                       <a
@@ -919,7 +1245,7 @@
                     <!-- YouTube -->
                     <div class="flex items-center group">
                       <span class="text-gray-500 mr-3 w-6 text-right"
-                        >[03]</span
+                        >[04]</span
                       >
                       <span class="text-gray-400 mr-2">➜</span>
                       <a
@@ -939,7 +1265,7 @@
                     <!-- Instagram (Content) -->
                     <div class="flex items-center group">
                       <span class="text-gray-500 mr-3 w-6 text-right"
-                        >[04]</span
+                        >[05]</span
                       >
                       <span class="text-gray-400 mr-2">➜</span>
                       <a
@@ -959,7 +1285,7 @@
                     <!-- Instagram (Templates) -->
                     <div class="flex items-center group">
                       <span class="text-gray-500 mr-3 w-6 text-right"
-                        >[05]</span
+                        >[06]</span
                       >
                       <span class="text-gray-400 mr-2">➜</span>
                       <a
@@ -979,7 +1305,7 @@
                     <!-- Payhip -->
                     <div class="flex items-center group">
                       <span class="text-gray-500 mr-3 w-6 text-right"
-                        >[06]</span
+                        >[07]</span
                       >
                       <span class="text-gray-400 mr-2">➜</span>
                       <a
@@ -988,7 +1314,8 @@
                         class="social-link text-teal-400 hover:text-teal-300 transition-colors truncate hover:underline"
                         data-platform="payhip"
                       >
-                        payhip.com/Layer                      </a>
+                        payhip.com/Layer
+                      </a>
                       <span
                         class="ml-2 text-xs text-gray-500 px-1.5 py-0.5 bg-gray-800 rounded flex-shrink-0"
                         >Digital Products</span
@@ -998,7 +1325,7 @@
                     <!-- Fiverr -->
                     <div class="flex items-center group">
                       <span class="text-gray-500 mr-3 w-6 text-right"
-                        >[07]</span
+                        >[08]</span
                       >
                       <span class="text-gray-400 mr-2">➜</span>
                       <a
@@ -1018,7 +1345,7 @@
                     <!-- Email -->
                     <div class="flex items-center group">
                       <span class="text-gray-500 mr-3 w-6 text-right"
-                        >[08]</span
+                        >[09]</span
                       >
                       <span class="text-gray-400 mr-2">➜</span>
                       <a
@@ -1062,7 +1389,7 @@
               >
                 <div class="flex justify-between items-center">
                   <div class="text-xs text-gray-400 font-mono">
-                    8 social links available
+                    9 social links available
                   </div>
                   <div class="text-xs text-gray-500">
                     <span class="hidden md:inline">social_links.txt </span>▲
@@ -1073,54 +1400,26 @@
           </div>
         </div>
       </section>
-
-      <!-- Project Modal (Hidden by default) -->
-      <div id="project-modal" class="modal fixed inset-0 z-[100] hidden">
-        <div class="modal-overlay absolute inset-0 bg-black/50"></div>
-        <div
-          class="modal-container relative min-h-screen flex items-center justify-center p-4"
-        >
-          <div
-            class="modal-content bg-[#F1DEDE] rounded-xl max-w-4xl w-full max-h-[90vh] overflow-auto"
-          >
-            <div
-              class="modal-header flex justify-between items-center p-6 border-b border-[#80727B]/40"
-            >
-              <h3 class="modal-title text-2xl font-semibold text-[#545643]">
-                Project Details
-              </h3>
-              <button
-                class="modal-close text-[#80727B] hover:text-[#545643] text-2xl p-2"
-              >
-                &times;
-              </button>
-            </div>
-            <div class="modal-body p-6">
-              <!-- Content will be loaded dynamically via JavaScript -->
-            </div>
-          </div>
-        </div>
-      </div>
     </main>
     <!-- Footer -->
-    <footer class="bg-[#F1DEDE] border-t border-[#80727B]/40 py-8 md:py-10">
+    <footer class="bg-[#F4E8DB] border-t border-[#72727B]/40 py-8 md:py-10">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center">
           <!-- Brand -->
           <div class="mb-4">
-            <span id="logo" class="text-xl font-semibold text-[#4C3B4D]">
+            <span id="logo" class="text-xl font-semibold text-[#513D3B]">
               Layer
             </span>
           </div>
 
           <!-- Tagline -->
-          <p class="text-[#80727B] text-sm md:text-base mb-6 max-w-2xl mx-auto">
+          <p class="text-[#4C4040] text-sm md:text-base mb-6 max-w-2xl mx-auto">
             Developer & Content Creator building digital experiences and sharing
             knowledge.
           </p>
 
           <!-- Copyright -->
-          <p class="text-[#80727B] text-sm mb-6">
+          <p class="text-[#4C4040] text-sm mb-6">
             © 2025 Layers. All rights reserved.
           </p>
 
@@ -1128,31 +1427,31 @@
           <div class="flex items-center justify-center space-x-6 mb-6">
             <a
               href="#"
-              class="text-[#80727B] hover:text-[#545643] text-sm transition-colors duration-200"
+              class="text-[#4C4040] hover:text-[#7B8974] text-sm transition-colors duration-200"
             >
               Privacy
             </a>
-            <span class="text-[#80727B]/40">•</span>
+            <span class="text-[#72727B]/40">•</span>
             <a
               href="#"
-              class="text-[#80727B] hover:text-[#545643] text-sm transition-colors duration-200"
+              class="text-[#4C4040] hover:text-[#7B8974] text-sm transition-colors duration-200"
             >
               Terms
             </a>
-            <span class="text-[#80727B]/40">•</span>
+            <span class="text-[#72727B]/40">•</span>
             <a
               href="mailto:yashkh.dev@gmail.com"
-              class="text-[#80727B] hover:text-[#545643] text-sm transition-colors duration-200"
+              class="text-[#4C4040] hover:text-[#7B8974] text-sm transition-colors duration-200"
             >
               Email
             </a>
           </div>
 
           <!-- Back to Top -->
-          <div class="pt-4 border-t border-[#80727B]/40">
+          <div class="pt-4 border-t border-[#72727B]/40">
             <a
               href="#"
-              class="back-to-top inline-flex items-center text-[#80727B] hover:text-[#545643] text-sm transition-colors duration-200"
+              class="back-to-top inline-flex items-center text-[#4C4040] hover:text-[#7B8974] text-sm transition-colors duration-200"
             >
               Back to top
               <svg
@@ -1174,9 +1473,10 @@
       </div>
     </footer>
 
-    <!-- JavaScript Files -->
+    <!-- JavaScript for Image Gallery -->
+    <script></script>
+
+    <!-- Existing JavaScript Files -->
     <script src="script.js"></script>
-    <script src="gallery.js"></script>
-    <!-- <script src="modals.js"></script> -->
   </body>
 </html>
