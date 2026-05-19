@@ -1,10 +1,10 @@
-import Navbar from "./components/layout/Navbar";
-import Hero from "./sections/Hero";
-import About from "./sections/About";
-import Projects from "./sections/Projects";
-import Journey from "./sections/Journey";
-import Contact from "./sections/Contact";
-import Footer from "./components/layout/Footer";
+import Navbar from "./components/layouts/Navbar.jsx";
+import Hero from "./sections/Hero.jsx";
+import About from "./sections/About.jsx";
+import Projects from "./sections/Projects.jsx";
+import Journey from "./sections/Journey.jsx";
+import Contact from "./sections/Contact.jsx";
+import Footer from "./components/layouts/Footrer.jsx";
 
 function App() {
   return (
