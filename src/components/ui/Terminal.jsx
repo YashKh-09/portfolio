@@ -25,7 +25,7 @@ export default function Terminal() {
 
   return (
     <div className="hidden lg:block w-full max-w-md">
-      <div className="bg-gradient-to-br from-gray-900 to-gray-950 rounded-xl shadow-[10px_20px_40px_rgba(0,0,0,0.6)] border border-gray-800 overflow-hidden">
+      <div className="bg-linear-to-br from-gray-900 to-gray-950 rounded-xl shadow-[10px_20px_40px_rgba(0,0,0,0.6)] border border-gray-800 overflow-hidden">
         {/* Header */}
         <div className="flex items-center justify-between px-4 py-3 bg-gray-800/50 border-b border-gray-700">
           <div className="flex items-center gap-2">
