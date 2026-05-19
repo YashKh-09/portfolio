@@ -27,8 +27,8 @@ const socialLinks = [
 export default function Contact() {
   const formRef = useRef(null);
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
+    user_name: "",
+    user_email: "",
     message: "",
   });
   const [errors, setErrors] = useState({});
@@ -37,14 +37,14 @@ export default function Contact() {
 
   const validate = useCallback(() => {
     const newErrors = {};
-    const { name, email, message } = formData;
+    const { user_name, user_email, message } = formData;
 
-    if (!name.trim() || name.trim().length < 2) {
-      newErrors.name = "Name must be at least 2 characters";
+    if (!user_name.trim() || user_name.trim().length < 2) {
+      newErrors.user_name = "Name must be at least 2 characters";
     }
 
-    if (!email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      newErrors.email = "Please enter a valid email address";
+    if (!user_email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(user_email)) {
+      newErrors.user_email = "Please enter a valid email address";
     }
 
     if (!message.trim() || message.trim().length < 10) {
@@ -78,7 +78,7 @@ export default function Contact() {
       );
 
       if (result.text === "OK") {
-        setFormData({ name: "", email: "", message: "" });
+        setFormData({ user_name: "", user_email: "", message: "" });
         setErrors({});
         setToast({
           message: "Message sent successfully! I'll get back to you soon.",
@@ -141,14 +141,16 @@ export default function Contact() {
                     type="text"
                     id="user_name"
                     name="user_name"
-                    value={formData.name}
+                    value={formData.user_name}
                     onChange={handleChange}
-                    className={inputClasses("name")}
+                    className={inputClasses("user_name")}
                     placeholder="Your name"
                     disabled={loading}
                   />
-                  {errors.name && (
-                    <p className="text-xs text-accent mt-1">{errors.name}</p>
+                  {errors.user_name && (
+                    <p className="text-xs text-accent mt-1">
+                      {errors.user_name}
+                    </p>
                   )}
                 </div>
 
@@ -163,14 +165,16 @@ export default function Contact() {
                     type="email"
                     id="user_email"
                     name="user_email"
-                    value={formData.email}
+                    value={formData.user_email}
                     onChange={handleChange}
-                    className={inputClasses("email")}
+                    className={inputClasses("user_email")}
                     placeholder="your.email@example.com"
                     disabled={loading}
                   />
-                  {errors.email && (
-                    <p className="text-xs text-accent mt-1">{errors.email}</p>
+                  {errors.user_email && (
+                    <p className="text-xs text-accent mt-1">
+                      {errors.user_email}
+                    </p>
                   )}
                 </div>
 

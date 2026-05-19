@@ -1,24 +1,16 @@
 const stats = [
   { value: "1+", label: "Year Building" },
-  { value: "5+", label: "Projects Completed" },
+  { value: "6+", label: "Projects Completed" },
 ];
 
 const skillCategories = [
   {
     title: "FRONTEND_",
-    skills: [
-      "HTML",
-      "CSS",
-      "Tailwind",
-      "JavaScript",
-      "TypeScript",
-      "React",
-      "Next.js",
-    ],
+    skills: ["HTML", "CSS", "Tailwind", "JavaScript", "React"],
   },
   {
     title: "BACKEND_",
-    skills: ["Node.js", "Express", "MongoDB", "Flask", "Python"],
+    skills: ["Node.js", "Express", "MongoDB", "JWT"],
   },
   {
     title: "DEV TOOLS_",
@@ -41,14 +33,14 @@ export default function About() {
           <p className="text-[clamp(1rem,3vw,1.25rem)] text-muted leading-relaxed mb-6">
             I'm a developer focused on learning by building. Over the past year,
             I've completed 5+ full-stack projects using the{" "}
-            <span className="text-accent">MERN</span> stack and{" "}
-            <span className="text-accent">Next.js</span>. I enjoy turning ideas
-            into real, working applications.
+            <span className="text-accent">MERN</span> stack. I enjoy turning
+            ideas into real, working applications.
           </p>
 
           <p className="text-[clamp(1rem,3vw,1.2rem)] text-muted leading-relaxed">
             Currently diving deeper into{" "}
-            <span className="text-accent">TypeScript</span>, exploring backend
+            <span className="text-accent">TypeScript</span> and{" "}
+            <span className="text-accent">NextJs</span>, exploring backend
             architecture, and building projects that solve real problems.
           </p>
         </div>
@@ -87,7 +79,7 @@ export default function About() {
         <div className="mt-12 pt-8 border-t border-border">
           <p className="text-sm text-muted mb-4">core stack //</p>
           <div className="flex flex-wrap gap-4 font-mono text-sm">
-            {["MERN", "Next.js", "TypeScript", "Flask"].map((tech, i, arr) => (
+            {["Express", "MongoDB", "Node.js"].map((tech, i, arr) => (
               <span key={tech} className="flex items-center gap-4">
                 <span className="text-accent">{tech}</span>
                 {i < arr.length - 1 && <span className="text-muted">/</span>}

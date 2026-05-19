@@ -2,7 +2,7 @@ export default function Terminal() {
   const lines = [
     {
       cmd: "whoami",
-      output: ["Yash Khandelwal", "Web Developer", "Digital Creator"],
+      output: ["Yash Khandelwal", "Web Developer", "Content Creator"],
     },
     { cmd: "pwd", output: ["/home/portfolio"] },
     {
@@ -17,7 +17,7 @@ export default function Terminal() {
     {
       cmd: "cat skills.txt",
       output: [
-        "Next.js • React • Express.js",
+        "React • Express.js",
         "Node.js • MongoDB • Responsive Design",
       ],
     },

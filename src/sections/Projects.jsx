@@ -2,36 +2,36 @@ import { FaInstagram } from "react-icons/fa";
 
 const projects = [
   {
-    title: "MULTI-VENDOR_ECOMMERCE",
+    title: "URL SHORTENER",
     description:
-      "Building a complete e-commerce platform where multiple sellers can list products, manage inventory, and track orders. Features include seller dashboard, product reviews, and payment integration.",
-    tags: ["MERN", "Next.js", "Tailwind", "Redux", "Node.js", "MongoDB"],
-    liveUrl: "https://github.com/yashx-dev/multi-vendor-ecommerce",
-    codeUrl: "https://github.com/yashx-dev/multi-vendor-ecommerce",
+      "A simple URL shortening service that allows users to create custom short links, track click analytics, and manage their URLs through a dashboard. It also includes user authentication, enabling secure access to personal link data and management features.",
+    tags: ["MERN", "JWT", "Bcrypt", "React-Router-Dom", "Node.js", "MongoDB"],
+    liveUrl: "https://github.com/yashx-dev/URL-shortener",
+    codeUrl: "https://github.com/yashx-dev/URL-shortener",
   },
   {
-    title: "SAAS_PROJECT_MANAGER",
+    title: "Aurelion - Clothing Brand",
     description:
-      "Developing a project management tool with workspace creation, task assignments, real-time updates, and team collaboration features. Inspired by tools like Trello and Asana.",
-    tags: ["Next.js", "TypeScript", "MongoDB", "Socket.io", "Tailwind"],
-    liveUrl: "https://github.com/yashx-dev/saas-project-manager",
-    codeUrl: "https://github.com/yashx-dev/saas-project-manager",
+      "A luxury fashion landing page showcasing curated collections, artisan craftsmanship, and private appointment booking — designed with an immersive editorial aesthetic that evokes the exclusivity of a Milan atelier.",
+    tags: ["HTML", "CSS", "JavaScript", "Tailwind"],
+    liveUrl: "https://github.com/yashx-dev/Aurelion",
+    codeUrl: "https://github.com/yashx-dev/Aurelion",
   },
   {
-    title: "AI_IMAGE_GENERATOR",
+    title: "Le Jardin - Restaurant",
     description:
-      "Creating an AI-powered app that generates images from text prompts. Integrates with OpenAI API, includes user galleries, and prompt history.",
-    tags: ["MERN", "OpenAI API", "Tailwind", "Cloudinary", "JWT"],
-    liveUrl: "https://github.com/yashx-dev/ai-image-generator",
-    codeUrl: "https://github.com/yashx-dev/ai-image-generator",
+      "An elegant restaurant landing page showcasing a premium dining experience with a clean UI, smooth navigation, and responsive design, featuring sections for menu highlights, ambiance, and reservations.",
+    tags: ["HTML", "CSS", "JavaScript", "Tailwind"],
+    liveUrl: "https://github.com/yashx-dev/restraunt-landing-page",
+    codeUrl: "https://github.com/yashx-dev/restraunt-landing-page",
   },
   {
-    title: "AUTH_SYSTEM_TEMPLATE",
+    title: "Authentication System Template",
     description:
-      "Building a complete authentication system with email verification, password reset, OAuth (Google/GitHub), and role-based access control. Ready to use in any project.",
-    tags: ["Next.js", "MongoDB", "NextAuth", "JWT", "TypeScript"],
-    liveUrl: "https://github.com/yashx-dev/auth-system-template",
-    codeUrl: "https://github.com/yashx-dev/auth-system-template",
+      "An authentication template built as an early project, featuring basic login and signup flows with simple form handling and state management. It serves as a foundational practice project for understanding user authentication concepts.",
+    tags: ["ExpressJs", "MongoDB", "Node.js", "JWT", "React"],
+    liveUrl: "https://github.com/yashx-dev/AUTH-template",
+    codeUrl: "https://github.com/yashx-dev/AUTH-template",
   },
 ];
 
