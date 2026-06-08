@@ -1,6 +1,18 @@
 import Terminal from "../components/ui/Terminal";
 
 export default function Hero() {
+  // Function to handle smooth scrolling without URL hash
+  const handleScroll = (e, targetId) => {
+    e.preventDefault();
+    const element = document.getElementById(targetId);
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }
+  };
+
   return (
     <section className="min-h-screen flex items-center pt-20 lg:pt-0 lg:px-10">
       <div className="container-custom w-full">
@@ -22,12 +34,14 @@ export default function Hero() {
             <div className="flex flex-col sm:flex-row gap-4 sm:justify-center lg:justify-start">
               <a
                 href="#work"
+                onClick={(e) => handleScroll(e, 'work')}
                 className="px-8 py-3.5 border text-sm font-medium tracking-wide transition-all duration-300 text-center border-accent text-accent hover:bg-accent hover:text-bg"
               >
                 View Work &rarr;
               </a>
               <a
                 href="#contact"
+                onClick={(e) => handleScroll(e, 'contact')}
                 className="px-8 py-3.5 border text-sm font-medium tracking-wide transition-all duration-300 text-center border-border text-text hover:border-green hover:text-green"
               >
                 Contact
@@ -37,6 +51,7 @@ export default function Hero() {
             <div className="hidden md:block mt-12">
               <a
                 href="#about"
+                onClick={(e) => handleScroll(e, 'about')}
                 className="inline-flex items-center gap-2 text-xs text-muted hover:text-accent transition-colors group"
               >
                 <span className="w-8 h-px bg-border group-hover:bg-accent transition-colors" />

@@ -1,12 +1,12 @@
 const stats = [
   { value: "1+", label: "Year Building" },
-  { value: "6+", label: "Projects Completed" },
+  { value: "7+", label: "Projects Completed" },
 ];
 
 const skillCategories = [
   {
     title: "FRONTEND_",
-    skills: ["HTML", "CSS", "Tailwind", "JavaScript", "React"],
+    skills: ["Tailwind", "JavaScript", "React", "TypeScript"],
   },
   {
     title: "BACKEND_",

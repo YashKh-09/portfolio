@@ -2,11 +2,11 @@ import { FaInstagram } from "react-icons/fa";
 
 const projects = [
   {
-    title: "URL SHORTENER",
+    title: "URL SHORTENER WITH AUTHENTICATION",
     description:
       "A simple URL shortening service that allows users to create custom short links, track click analytics, and manage their URLs through a dashboard. It also includes user authentication, enabling secure access to personal link data and management features.",
     tags: ["MERN", "JWT", "Bcrypt", "React-Router-Dom", "Node.js", "MongoDB"],
-    liveUrl: "https://github.com/yashx-dev/URL-shortener",
+    liveUrl: "https://github.com/yashx-dev/URL-shortener/blob/main/README.md",
     codeUrl: "https://github.com/yashx-dev/URL-shortener",
   },
   {
@@ -14,7 +14,7 @@ const projects = [
     description:
       "A luxury fashion landing page showcasing curated collections, artisan craftsmanship, and private appointment booking — designed with an immersive editorial aesthetic that evokes the exclusivity of a Milan atelier.",
     tags: ["HTML", "CSS", "JavaScript", "Tailwind"],
-    liveUrl: "https://github.com/yashx-dev/Aurelion",
+    liveUrl: "https://aurelion-clothing.netlify.app/",
     codeUrl: "https://github.com/yashx-dev/Aurelion",
   },
   {
@@ -22,20 +22,20 @@ const projects = [
     description:
       "An elegant restaurant landing page showcasing a premium dining experience with a clean UI, smooth navigation, and responsive design, featuring sections for menu highlights, ambiance, and reservations.",
     tags: ["HTML", "CSS", "JavaScript", "Tailwind"],
-    liveUrl: "https://github.com/yashx-dev/restraunt-landing-page",
+    liveUrl: "https://lejaridan.netlify.app/",
     codeUrl: "https://github.com/yashx-dev/restraunt-landing-page",
   },
   {
-    title: "Authentication System Template",
+    title: "UI_Nova - Video Editor Portfolio",
     description:
-      "An authentication template built as an early project, featuring basic login and signup flows with simple form handling and state management. It serves as a foundational practice project for understanding user authentication concepts.",
-    tags: ["ExpressJs", "MongoDB", "Node.js", "JWT", "React"],
-    liveUrl: "https://github.com/yashx-dev/AUTH-template",
-    codeUrl: "https://github.com/yashx-dev/AUTH-template",
+      "A modern portfolio website for a video editor, showcasing projects, skills, and creative work through a responsive and interactive design. It features video previews, custom animations, social links, and a contact form for inquiries and collaborations.",
+    tags: ["TypeScript", "React.js", "Tailwind CSS"],
+    liveUrl: "https://github.com/yashx-dev/UI-Nova-portfolio",
+    codeUrl: "https://github.com/yashx-dev/UI-Nova-portfolio",
   },
 ];
 
-export default function Projects() {
+export default function Projects() {  
   return (
     <section id="work" className="py-20 md:py-24 border-t border-border">
       <div className="container-custom">
