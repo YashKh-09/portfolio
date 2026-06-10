@@ -30,7 +30,7 @@ const projects = [
     description:
       "A modern portfolio website for a video editor, showcasing projects, skills, and creative work through a responsive and interactive design. It features video previews, custom animations, social links, and a contact form for inquiries and collaborations.",
     tags: ["TypeScript", "React.js", "Tailwind CSS"],
-    liveUrl: "https://github.com/yashx-dev/UI-Nova-portfolio",
+    liveUrl: "https://uinovafx.netlify.app/",
     codeUrl: "https://github.com/yashx-dev/UI-Nova-portfolio",
   },
 ];
