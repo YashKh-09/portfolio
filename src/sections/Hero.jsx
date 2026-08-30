@@ -18,11 +18,11 @@ export default function Hero() {
       <div className="container-custom w-full">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20">
           <div className="max-w-2xl text-center lg:text-left">
-            <h1 className="font-['Archivo'] text-[clamp(2.5rem,8vw,4rem)] font-black tracking-[-0.05em] leading-[1.1] mb-8 md:mb-10">
+            <h1 className="font-['Archivo'] text-[clamp(2.5rem,8vw,4rem)] font-black tracking-tighter leading-[1.1] mb-8 md:mb-10">
               Web Developer
               <br />
               <span className="text-accent opacity-80">
-                & Digital Creator
+                & Content Creator
               </span>
             </h1>
 
