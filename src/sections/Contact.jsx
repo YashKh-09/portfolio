@@ -6,14 +6,14 @@ import { FaGithub, FaInstagram, FaEnvelope } from "react-icons/fa";
 const socialLinks = [
   {
     platform: "GitHub",
-    url: "https://github.com/yashx-dev",
-    handle: "github.com/yashx-dev",
+    url: "https://github.com/notebookyash",
+    handle: "github.com/notebookyash",
     icon: FaGithub,
   },
   {
     platform: "Instagram",
-    url: "https://www.instagram.com/_yashxdev",
-    handle: "@_yashxdev",
+    url: "https://www.instagram.com/notebook.yash",
+    handle: "@notebook.yash",
     icon: FaInstagram,
   },
   {
@@ -26,11 +26,13 @@ const socialLinks = [
 
 export default function Contact() {
   const formRef = useRef(null);
+
   const [formData, setFormData] = useState({
     user_name: "",
     user_email: "",
     message: "",
   });
+
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
   const [toast, setToast] = useState(null);
@@ -43,7 +45,10 @@ export default function Contact() {
       newErrors.user_name = "Name must be at least 2 characters";
     }
 
-    if (!user_email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(user_email)) {
+    if (
+      !user_email.trim() ||
+      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(user_email)
+    ) {
       newErrors.user_email = "Please enter a valid email address";
     }
 
@@ -57,29 +62,50 @@ export default function Contact() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-    if (errors[name]) setErrors((prev) => ({ ...prev, [name]: null }));
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+
+    if (errors[name]) {
+      setErrors((prev) => ({
+        ...prev,
+        [name]: null,
+      }));
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (!validate()) {
-      setToast({ message: "Please fix the errors in the form", type: "error" });
+      setToast({
+        message: "Please fix the errors in the form",
+        type: "error",
+      });
       return;
     }
 
     setLoading(true);
+
     try {
       const result = await emailjs.sendForm(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         formRef.current,
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       );
 
       if (result.text === "OK") {
-        setFormData({ user_name: "", user_email: "", message: "" });
+        setFormData({
+          user_name: "",
+          user_email: "",
+          message: "",
+        });
+
         setErrors({});
+
         setToast({
           message: "Message sent successfully! I'll get back to you soon.",
           type: "success",
@@ -87,6 +113,7 @@ export default function Contact() {
       }
     } catch (error) {
       console.error("Email error:", error);
+
       setToast({
         message: "Failed to send message. Please try again.",
         type: "error",
@@ -116,9 +143,10 @@ export default function Contact() {
       <section id="contact" className="py-20 md:py-24 border-t border-border">
         <div className="container-custom">
           <div className="mb-12 md:mb-16">
-            <h2 className="font-['Archivo'] text-[clamp(2rem,6vw,2.25rem)] font-bold tracking-[-0.05em] text-accent opacity-90">
+            <h2 className="font-['Archivo'] text-[clamp(2rem,6vw,2.25rem)] font-bold tracking-tighter text-accent opacity-90">
               Contact_
             </h2>
+
             <div className="w-12 md:w-16 h-px bg-accent opacity-50 mt-4" />
           </div>
 
@@ -129,7 +157,11 @@ export default function Contact() {
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
             <div className="lg:col-span-7">
-              <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
+              <form
+                ref={formRef}
+                onSubmit={handleSubmit}
+                className="space-y-6"
+              >
                 <div>
                   <label
                     htmlFor="user_name"
@@ -137,6 +169,7 @@ export default function Contact() {
                   >
                     Name <span className="text-accent">*</span>
                   </label>
+
                   <input
                     type="text"
                     id="user_name"
@@ -147,6 +180,7 @@ export default function Contact() {
                     placeholder="Your name"
                     disabled={loading}
                   />
+
                   {errors.user_name && (
                     <p className="text-xs text-accent mt-1">
                       {errors.user_name}
@@ -161,6 +195,7 @@ export default function Contact() {
                   >
                     Email <span className="text-accent">*</span>
                   </label>
+
                   <input
                     type="email"
                     id="user_email"
@@ -171,6 +206,7 @@ export default function Contact() {
                     placeholder="your.email@example.com"
                     disabled={loading}
                   />
+
                   {errors.user_email && (
                     <p className="text-xs text-accent mt-1">
                       {errors.user_email}
@@ -185,6 +221,7 @@ export default function Contact() {
                   >
                     Message <span className="text-accent">*</span>
                   </label>
+
                   <textarea
                     id="message"
                     name="message"
@@ -195,8 +232,11 @@ export default function Contact() {
                     placeholder="Tell me about your project or just say hi..."
                     disabled={loading}
                   />
+
                   {errors.message && (
-                    <p className="text-xs text-accent mt-1">{errors.message}</p>
+                    <p className="text-xs text-accent mt-1">
+                      {errors.message}
+                    </p>
                   )}
                 </div>
 
@@ -215,7 +255,7 @@ export default function Contact() {
                       Sending...
                     </span>
                   ) : (
-                    "Send Message \u2192"
+                    "Send Message →"
                   )}
                 </button>
               </form>
@@ -229,11 +269,13 @@ export default function Contact() {
               <div className="space-y-4 mb-8">
                 {socialLinks.map((link) => {
                   const Icon = link.icon;
+
                   return (
                     <div key={link.platform} className="group">
                       <span className="text-sm text-muted block mb-1">
                         {link.platform}
                       </span>
+
                       <a
                         href={link.url}
                         target="_blank"
@@ -243,6 +285,7 @@ export default function Contact() {
                         <span className="text-accent opacity-50 group-hover:opacity-100 transition-opacity">
                           <Icon />
                         </span>
+
                         {link.handle}
                       </a>
                     </div>
@@ -261,6 +304,7 @@ export default function Contact() {
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green opacity-75" />
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-green" />
                   </span>
+
                   <span className="text-xs text-muted">
                     Usually responds within a day
                   </span>
