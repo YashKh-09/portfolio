@@ -1,20 +1,49 @@
 import { useState, useRef, useCallback } from "react";
+
 import emailjs from "@emailjs/browser";
+
 import Toast from "../components/ui/Toast";
-import { FaGithub, FaInstagram, FaEnvelope } from "react-icons/fa";
+
+import {
+  FaGithub,
+  FaInstagram,
+  FaEnvelope,
+  FaLinkedin,
+  FaYoutube,
+} from "react-icons/fa";
+
+import { FaSquareXTwitter } from "react-icons/fa6";
 
 const socialLinks = [
-  {
-    platform: "GitHub",
-    url: "https://github.com/notebookyash",
-    handle: "github.com/notebookyash",
-    icon: FaGithub,
-  },
   {
     platform: "Instagram",
     url: "https://www.instagram.com/notebook.yash",
     handle: "@notebook.yash",
     icon: FaInstagram,
+  },
+  {
+    platform: "Youtube",
+    url: "https://www.youtube.com/@notebookyash",
+    handle: "@notebookyash",
+    icon: FaYoutube,
+  },
+  {
+    platform: "LinkedIn",
+    url: "https://www.linkedin.com/in/notebookyash/",
+    handle: "notebookyash",
+    icon: FaLinkedin,
+  },
+  {
+    platform: "X (formerly Twitter)",
+    url: "https://www.x.com/notebook_yash",
+    handle: "@notebook_yash",
+    icon: FaSquareXTwitter,
+  },
+  {
+    platform: "GitHub",
+    url: "https://github.com/notebookyash",
+    handle: "github.com/notebookyash",
+    icon: FaGithub,
   },
   {
     platform: "Email",
@@ -39,16 +68,14 @@ export default function Contact() {
 
   const validate = useCallback(() => {
     const newErrors = {};
+
     const { user_name, user_email, message } = formData;
 
     if (!user_name.trim() || user_name.trim().length < 2) {
       newErrors.user_name = "Name must be at least 2 characters";
     }
 
-    if (
-      !user_email.trim() ||
-      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(user_email)
-    ) {
+    if (!user_email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(user_email)) {
       newErrors.user_email = "Please enter a valid email address";
     }
 
@@ -57,6 +84,7 @@ export default function Contact() {
     }
 
     setErrors(newErrors);
+
     return Object.keys(newErrors).length === 0;
   }, [formData]);
 
@@ -84,6 +112,7 @@ export default function Contact() {
         message: "Please fix the errors in the form",
         type: "error",
       });
+
       return;
     }
 
@@ -94,7 +123,7 @@ export default function Contact() {
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         formRef.current,
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
       );
 
       if (result.text === "OK") {
@@ -142,6 +171,7 @@ export default function Contact() {
 
       <section id="contact" className="py-20 md:py-24 border-t border-border">
         <div className="container-custom">
+          {/* Section Header */}
           <div className="mb-12 md:mb-16">
             <h2 className="font-['Archivo'] text-[clamp(2rem,6vw,2.25rem)] font-bold tracking-tighter text-accent opacity-90">
               Contact_
@@ -150,18 +180,18 @@ export default function Contact() {
             <div className="w-12 md:w-16 h-px bg-accent opacity-50 mt-4" />
           </div>
 
+          {/* Description */}
           <p className="max-w-2xl mb-10 text-[clamp(1rem,3vw,1.2rem)] text-muted leading-relaxed">
             Want to collaborate, ask a question, or just say hi? Drop a message
             or find me on social media.
           </p>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
+          {/* Main Content */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+            {/* Contact Form */}
             <div className="lg:col-span-7">
-              <form
-                ref={formRef}
-                onSubmit={handleSubmit}
-                className="space-y-6"
-              >
+              <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
+                {/* Name */}
                 <div>
                   <label
                     htmlFor="user_name"
@@ -188,6 +218,7 @@ export default function Contact() {
                   )}
                 </div>
 
+                {/* Email */}
                 <div>
                   <label
                     htmlFor="user_email"
@@ -214,6 +245,7 @@ export default function Contact() {
                   )}
                 </div>
 
+                {/* Message */}
                 <div>
                   <label
                     htmlFor="message"
@@ -234,12 +266,11 @@ export default function Contact() {
                   />
 
                   {errors.message && (
-                    <p className="text-xs text-accent mt-1">
-                      {errors.message}
-                    </p>
+                    <p className="text-xs text-accent mt-1">{errors.message}</p>
                   )}
                 </div>
 
+                {/* Submit */}
                 <button
                   type="submit"
                   disabled={loading}
@@ -261,18 +292,20 @@ export default function Contact() {
               </form>
             </div>
 
+            {/* Social Links */}
             <div className="lg:col-span-4 lg:col-start-9">
               <h3 className="font-['Archivo'] text-lg md:text-xl font-bold mb-6 text-accent opacity-80">
                 Find Me Online_
               </h3>
 
-              <div className="space-y-4 mb-8">
+              {/* Two-column social links */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 mb-8">
                 {socialLinks.map((link) => {
                   const Icon = link.icon;
 
                   return (
-                    <div key={link.platform} className="group">
-                      <span className="text-sm text-muted block mb-1">
+                    <div key={link.platform} className="group min-w-0">
+                      <span className="text-xs text-muted block mb-1">
                         {link.platform}
                       </span>
 
@@ -280,19 +313,20 @@ export default function Contact() {
                         href={link.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-md text-text hover:text-green transition-colors flex items-center gap-2"
+                        className="text-sm text-text hover:text-green transition-colors flex items-center gap-2 min-w-0"
                       >
-                        <span className="text-accent opacity-50 group-hover:opacity-100 transition-opacity">
+                        <span className="shrink-0 text-accent opacity-50 group-hover:opacity-100 transition-opacity">
                           <Icon />
                         </span>
 
-                        {link.handle}
+                        <span className="truncate">{link.handle}</span>
                       </a>
                     </div>
                   );
                 })}
               </div>
 
+              {/* Availability */}
               <div className="border-t border-border pt-6">
                 <p className="text-sm italic text-muted leading-relaxed">
                   I'm always open to new connections and conversations. Feel
@@ -302,6 +336,7 @@ export default function Contact() {
                 <div className="flex items-center gap-2 mt-4">
                   <span className="relative flex h-2 w-2">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green opacity-75" />
+
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-green" />
                   </span>
 
@@ -317,3 +352,5 @@ export default function Contact() {
     </>
   );
 }
+
+
